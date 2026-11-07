@@ -150,7 +150,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </BrutalistCard>
 
         <BrutalistCard bgColor="orange" shadow="md" className="p-4 text-center">
-          <span className="text-3xl sm:text-4xl font-black font-mono block">29</span>
+          <span className="text-3xl sm:text-4xl font-black font-mono block">125</span>
           <span className="text-xs font-black uppercase text-[#1A1A1A] tracking-wider">
             Verified Unit Tests
           </span>
