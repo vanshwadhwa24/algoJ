@@ -48,9 +48,8 @@ public class ControllerIntegrationTest {
     @Test
     @DisplayName("POST /api/algorithms/run executes Bubble Sort and returns ordered steps")
     void testRunBubbleSort() throws Exception {
-        AlgorithmRunRequest req = new AlgorithmRunRequest();
-        req.setAlgorithmId("bubble-sort");
-        req.setArray(List.of(5, 2, 8, 1, 9));
+        AlgorithmRunRequest req = new AlgorithmRunRequest(
+                "bubble-sort", List.of(5, 2, 8, 1, 9), null, null, null, null, null, null, null, null);
 
         mockMvc.perform(post("/api/algorithms/run")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -65,10 +64,8 @@ public class ControllerIntegrationTest {
     @Test
     @DisplayName("POST /api/structures/operate executes Stack push and returns trace")
     void testOperateStack() throws Exception {
-        DataStructureOpRequest req = new DataStructureOpRequest();
-        req.setStructureId("stacks");
-        req.setOperation("push");
-        req.setValue(88);
+        DataStructureOpRequest req = new DataStructureOpRequest(
+                "stacks", "push", 88, null, null, null, null, null, null);
 
         mockMvc.perform(post("/api/structures/operate")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -81,8 +78,8 @@ public class ControllerIntegrationTest {
     @Test
     @DisplayName("POST /api/algorithms/run with invalid algorithmId returns 400 Bad Request with JSON error")
     void testInvalidAlgorithmError() throws Exception {
-        AlgorithmRunRequest req = new AlgorithmRunRequest();
-        req.setAlgorithmId("unknown-algorithm-xyz");
+        AlgorithmRunRequest req = new AlgorithmRunRequest(
+                "unknown-algorithm-xyz", null, null, null, null, null, null, null, null, null);
 
         mockMvc.perform(post("/api/algorithms/run")
                         .contentType(MediaType.APPLICATION_JSON)

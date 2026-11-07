@@ -41,10 +41,10 @@ public class DataStructureEnginesTest {
         assertNotNull(steps);
         assertFalse(steps.isEmpty());
         for (int i = 0; i < steps.size(); i++) {
-            assertEquals(i, steps.get(i).getStepIndex());
-            assertNotNull(steps.get(i).getOperationType());
-            assertNotNull(steps.get(i).getDescription());
-            assertNotNull(steps.get(i).getState());
+            assertEquals(i, steps.get(i).stepIndex());
+            assertNotNull(steps.get(i).operationType());
+            assertNotNull(steps.get(i).description());
+            assertNotNull(steps.get(i).state());
         }
     }
 
@@ -59,13 +59,13 @@ public class DataStructureEnginesTest {
 
         List<ExecutionStep> insertSteps = arrayEngine.executeOperation(state, "insert", 1, 99);
         assertTraceOrderAndValidity(insertSteps);
-        ArrayDSState afterInsert = (ArrayDSState) insertSteps.get(insertSteps.size() - 1).getState();
+        ArrayDSState afterInsert = (ArrayDSState) insertSteps.get(insertSteps.size() - 1).state();
         assertEquals(4, afterInsert.getCells().size());
         assertEquals(99, afterInsert.getCells().get(1).getValue());
 
         List<ExecutionStep> deleteSteps = arrayEngine.executeOperation(afterInsert, "delete", 1, null);
         assertTraceOrderAndValidity(deleteSteps);
-        ArrayDSState afterDelete = (ArrayDSState) deleteSteps.get(deleteSteps.size() - 1).getState();
+        ArrayDSState afterDelete = (ArrayDSState) deleteSteps.get(deleteSteps.size() - 1).state();
         assertEquals(3, afterDelete.getCells().size());
         assertEquals(20, afterDelete.getCells().get(1).getValue());
     }
@@ -78,12 +78,12 @@ public class DataStructureEnginesTest {
 
         List<ExecutionStep> headSteps = linkedListEngine.executeOperation(state, "insertHead", 5, 0);
         assertTraceOrderAndValidity(headSteps);
-        LinkedListDSState afterHead = (LinkedListDSState) headSteps.get(headSteps.size() - 1).getState();
+        LinkedListDSState afterHead = (LinkedListDSState) headSteps.get(headSteps.size() - 1).state();
         assertEquals(5, afterHead.getNodes().get(0).getValue());
 
         List<ExecutionStep> revSteps = linkedListEngine.executeOperation(afterHead, "reverse", null, null);
         assertTraceOrderAndValidity(revSteps);
-        LinkedListDSState afterRev = (LinkedListDSState) revSteps.get(revSteps.size() - 1).getState();
+        LinkedListDSState afterRev = (LinkedListDSState) revSteps.get(revSteps.size() - 1).state();
         assertEquals(20, afterRev.getNodes().get(0).getValue());
         assertEquals(5, afterRev.getNodes().get(afterRev.getNodes().size() - 1).getValue());
     }
@@ -94,17 +94,17 @@ public class DataStructureEnginesTest {
         StackDSState state = stackEngine.createInitial(List.of(1, 2), 3);
         List<ExecutionStep> pushSteps = stackEngine.executeOperation(state, "push", 3);
         assertTraceOrderAndValidity(pushSteps);
-        StackDSState afterPush = (StackDSState) pushSteps.get(pushSteps.size() - 1).getState();
+        StackDSState afterPush = (StackDSState) pushSteps.get(pushSteps.size() - 1).state();
         assertEquals(3, afterPush.getItems().size());
 
         // Overflow
         List<ExecutionStep> overflowSteps = stackEngine.executeOperation(afterPush, "push", 4);
-        assertEquals("overflow", overflowSteps.get(0).getOperationType());
+        assertEquals("overflow", overflowSteps.get(0).operationType());
 
         // Pop
         List<ExecutionStep> popSteps = stackEngine.executeOperation(afterPush, "pop", null);
         assertTraceOrderAndValidity(popSteps);
-        StackDSState afterPop = (StackDSState) popSteps.get(popSteps.size() - 1).getState();
+        StackDSState afterPop = (StackDSState) popSteps.get(popSteps.size() - 1).state();
         assertEquals(2, afterPop.getItems().size());
     }
 
@@ -116,12 +116,12 @@ public class DataStructureEnginesTest {
 
         List<ExecutionStep> enqSteps = queueEngine.executeOperation(state, "enqueue", 30);
         assertTraceOrderAndValidity(enqSteps);
-        QueueDSState afterEnq = (QueueDSState) enqSteps.get(enqSteps.size() - 1).getState();
+        QueueDSState afterEnq = (QueueDSState) enqSteps.get(enqSteps.size() - 1).state();
         assertEquals(3, afterEnq.getSize());
 
         List<ExecutionStep> deqSteps = queueEngine.executeOperation(afterEnq, "dequeue", null);
         assertTraceOrderAndValidity(deqSteps);
-        QueueDSState afterDeq = (QueueDSState) deqSteps.get(deqSteps.size() - 1).getState();
+        QueueDSState afterDeq = (QueueDSState) deqSteps.get(deqSteps.size() - 1).state();
         assertEquals(2, afterDeq.getSize());
     }
 
@@ -150,7 +150,7 @@ public class DataStructureEnginesTest {
 
         List<ExecutionStep> inorderSteps = bstEngine.executeOperation(state, "inorder", null);
         assertTraceOrderAndValidity(inorderSteps);
-        BSTDSState finalState = (BSTDSState) inorderSteps.get(inorderSteps.size() - 1).getState();
+        BSTDSState finalState = (BSTDSState) inorderSteps.get(inorderSteps.size() - 1).state();
         List<Integer> out = finalState.getTraversalOutput();
         assertNotNull(out);
         assertEquals(7, out.size());
@@ -174,7 +174,7 @@ public class DataStructureEnginesTest {
         HeapDSState state = heapEngine.createInitial("max", List.of(80, 50, 70, 30, 40, 60));
         List<ExecutionStep> insertSteps = heapEngine.executeOperation(state, "insert", 95);
         assertTraceOrderAndValidity(insertSteps);
-        HeapDSState afterInsert = (HeapDSState) insertSteps.get(insertSteps.size() - 1).getState();
+        HeapDSState afterInsert = (HeapDSState) insertSteps.get(insertSteps.size() - 1).state();
         assertEquals(95, afterInsert.getArray().get(0).getValue(), "New max 95 must bubble up to root index 0");
     }
 
@@ -184,11 +184,11 @@ public class DataStructureEnginesTest {
         TrieDSState state = trieEngine.createInitial(List.of("car", "cart", "cat", "dog"));
         List<ExecutionStep> exactMatch = trieEngine.executeOperation(state, "searchWord", "cart");
         assertTraceOrderAndValidity(exactMatch);
-        assertEquals("found", exactMatch.get(exactMatch.size() - 1).getOperationType());
+        assertEquals("found", exactMatch.get(exactMatch.size() - 1).operationType());
 
         List<ExecutionStep> prefixSteps = trieEngine.executeOperation(state, "startsWith", "ca");
         assertTraceOrderAndValidity(prefixSteps);
-        TrieDSState prefixState = (TrieDSState) prefixSteps.get(prefixSteps.size() - 1).getState();
+        TrieDSState prefixState = (TrieDSState) prefixSteps.get(prefixSteps.size() - 1).state();
         assertEquals(3, prefixState.getSearchResults().size(), "Prefix 'ca' must match car, cart, cat");
     }
 }

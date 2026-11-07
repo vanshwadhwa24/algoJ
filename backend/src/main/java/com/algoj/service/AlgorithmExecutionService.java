@@ -50,12 +50,12 @@ public class AlgorithmExecutionService {
             throw new IllegalArgumentException("AlgorithmRunRequest must not be null.");
         }
 
-        String algoId = request.getAlgorithmId();
+        String algoId = request.algorithmId();
         if (algoId == null || algoId.trim().isEmpty()) {
             throw new IllegalArgumentException("algorithmId must not be null or empty.");
         }
 
-        List<Integer> array = request.getArray();
+        List<Integer> array = request.array();
         if (array == null || array.isEmpty()) {
             array = List.of(35, 12, 48, 22, 60, 5);
         }
@@ -85,57 +85,57 @@ public class AlgorithmExecutionService {
 
             // Searching
             case "linear-search":
-                steps = searchingEngine.linearSearch(array, request.getTarget() != null ? request.getTarget() : 22);
+                steps = searchingEngine.linearSearch(array, request.target() != null ? request.target() : 22);
                 break;
             case "binary-search":
-                steps = searchingEngine.binarySearch(array, request.getTarget() != null ? request.getTarget() : 22);
+                steps = searchingEngine.binarySearch(array, request.target() != null ? request.target() : 22);
                 break;
 
             // Graphs
             case "bfs":
-                steps = graphEngine.bfs(parseGraph(request.getGraph()), request.getTarget() != null ? String.valueOf(request.getTarget()) : null);
+                steps = graphEngine.bfs(parseGraph(request.graph()), request.target() != null ? String.valueOf(request.target()) : null);
                 break;
             case "dfs":
-                steps = graphEngine.dfs(parseGraph(request.getGraph()), request.getTarget() != null ? String.valueOf(request.getTarget()) : null);
+                steps = graphEngine.dfs(parseGraph(request.graph()), request.target() != null ? String.valueOf(request.target()) : null);
                 break;
             case "dijkstra":
-                steps = graphEngine.dijkstra(parseGraph(request.getGraph()), request.getTarget() != null ? String.valueOf(request.getTarget()) : null);
+                steps = graphEngine.dijkstra(parseGraph(request.graph()), request.target() != null ? String.valueOf(request.target()) : null);
                 break;
             case "bellman-ford":
-                steps = graphEngine.bellmanFord(parseGraph(request.getGraph()), request.getTarget() != null ? String.valueOf(request.getTarget()) : null);
+                steps = graphEngine.bellmanFord(parseGraph(request.graph()), request.target() != null ? String.valueOf(request.target()) : null);
                 break;
             case "floyd-warshall":
-                steps = graphEngine.floydWarshall(parseGraph(request.getGraph()));
+                steps = graphEngine.floydWarshall(parseGraph(request.graph()));
                 break;
             case "kruskal":
-                steps = graphEngine.kruskal(parseGraph(request.getGraph()));
+                steps = graphEngine.kruskal(parseGraph(request.graph()));
                 break;
             case "prim":
-                steps = graphEngine.prim(parseGraph(request.getGraph()), request.getTarget() != null ? String.valueOf(request.getTarget()) : null);
+                steps = graphEngine.prim(parseGraph(request.graph()), request.target() != null ? String.valueOf(request.target()) : null);
                 break;
 
             // Recursion & Backtracking
             case "factorial":
-                steps = recursionEngine.factorial(request.getN() != null ? request.getN() : 4);
+                steps = recursionEngine.factorial(request.n() != null ? request.n() : 4);
                 break;
             case "fibonacci":
-                steps = recursionEngine.fibonacci(request.getN() != null ? request.getN() : 6, request.getMode() != null ? request.getMode() : "tabulated");
+                steps = recursionEngine.fibonacci(request.n() != null ? request.n() : 6, request.mode() != null ? request.mode() : "tabulated");
                 break;
             case "tower-of-hanoi":
-                steps = recursionEngine.towerOfHanoi(request.getDisks() != null ? request.getDisks() : 3);
+                steps = recursionEngine.towerOfHanoi(request.disks() != null ? request.disks() : 3);
                 break;
             case "n-queens":
-                steps = recursionEngine.nQueens(request.getN() != null ? request.getN() : 4);
+                steps = recursionEngine.nQueens(request.n() != null ? request.n() : 4);
                 break;
 
             // Dynamic Programming
             case "knapsack":
-                steps = dpEngine.knapsack(null, request.getN() != null ? request.getN() : 5);
+                steps = dpEngine.knapsack(null, request.n() != null ? request.n() : 5);
                 break;
             case "lcs":
                 steps = dpEngine.lcs(
-                        request.getText1() != null ? request.getText1() : "STONE",
-                        request.getText2() != null ? request.getText2() : "LONGEST"
+                        request.text1() != null ? request.text1() : "STONE",
+                        request.text2() != null ? request.text2() : "LONGEST"
                 );
                 break;
 

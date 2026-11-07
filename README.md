@@ -200,7 +200,7 @@ mvn test
 ```bash
 npm test
 ```
-*Executes 29 test cases verifying playback mechanics, timeline scrub logic, and local fallbacks.*
+*Executes 91 test cases verifying playback mechanics, timeline scrub logic, and local fallbacks.*
 
 #### Production Build Verification
 ```bash

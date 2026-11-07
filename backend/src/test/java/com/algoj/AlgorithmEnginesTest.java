@@ -43,11 +43,11 @@ public class AlgorithmEnginesTest {
         assertNotNull(steps);
         assertFalse(steps.isEmpty(), "Trace must not be empty");
         for (int i = 0; i < steps.size(); i++) {
-            assertEquals(i, steps.get(i).getStepIndex(), "StepIndex must be strictly 0-indexed and continuous");
-            assertNotNull(steps.get(i).getOperationType(), "OperationType must not be null");
-            assertNotNull(steps.get(i).getDescription(), "Description must not be null");
-            assertNotNull(steps.get(i).getState(), "State must not be null");
-            assertTrue(steps.get(i).getCodeLine() > 0, "CodeLine must be positive");
+            assertEquals(i, steps.get(i).stepIndex(), "StepIndex must be strictly 0-indexed and continuous");
+            assertNotNull(steps.get(i).operationType(), "OperationType must not be null");
+            assertNotNull(steps.get(i).description(), "Description must not be null");
+            assertNotNull(steps.get(i).state(), "State must not be null");
+            assertTrue(steps.get(i).codeLine() > 0, "CodeLine must be positive");
         }
     }
 
@@ -67,7 +67,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.bubbleSort(input);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getComparisons() > 0);
         assertTrue(finalState.getSwaps() > 0);
@@ -80,7 +80,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.selectionSort(input);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getComparisons() > 0);
     }
@@ -92,7 +92,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.insertionSort(reversed);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getWrites() > 0);
     }
@@ -104,7 +104,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.mergeSort(input);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getWrites() > 0);
     }
@@ -116,7 +116,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.quickSort(input);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getComparisons() > 0);
     }
@@ -128,7 +128,7 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> steps = sortingEngine.heapSort(input);
         assertTraceOrderAndValidity(steps);
 
-        SortState finalState = (SortState) steps.get(steps.size() - 1).getState();
+        SortState finalState = (SortState) steps.get(steps.size() - 1).state();
         assertSorted(finalState.getArray());
         assertTrue(finalState.getSwaps() > 0);
     }
@@ -140,12 +140,12 @@ public class AlgorithmEnginesTest {
         List<Integer> input = List.of(10, 20, 30, 40, 50);
         List<ExecutionStep> foundSteps = searchingEngine.linearSearch(input, 30);
         assertTraceOrderAndValidity(foundSteps);
-        SearchState foundState = (SearchState) foundSteps.get(foundSteps.size() - 1).getState();
+        SearchState foundState = (SearchState) foundSteps.get(foundSteps.size() - 1).state();
         assertEquals(2, foundState.getFoundIndex());
 
         List<ExecutionStep> absentSteps = searchingEngine.linearSearch(input, 999);
         assertTraceOrderAndValidity(absentSteps);
-        SearchState absentState = (SearchState) absentSteps.get(absentSteps.size() - 1).getState();
+        SearchState absentState = (SearchState) absentSteps.get(absentSteps.size() - 1).state();
         assertNull(absentState.getFoundIndex());
     }
 
@@ -155,12 +155,12 @@ public class AlgorithmEnginesTest {
         List<Integer> input = List.of(5, 12, 23, 34, 45, 56, 67, 78, 89);
         List<ExecutionStep> foundSteps = searchingEngine.binarySearch(input, 45);
         assertTraceOrderAndValidity(foundSteps);
-        SearchState foundState = (SearchState) foundSteps.get(foundSteps.size() - 1).getState();
+        SearchState foundState = (SearchState) foundSteps.get(foundSteps.size() - 1).state();
         assertEquals(4, foundState.getFoundIndex());
 
         List<ExecutionStep> absentSteps = searchingEngine.binarySearch(input, 100);
         assertTraceOrderAndValidity(absentSteps);
-        SearchState absentState = (SearchState) absentSteps.get(absentSteps.size() - 1).getState();
+        SearchState absentState = (SearchState) absentSteps.get(absentSteps.size() - 1).state();
         assertNull(absentState.getFoundIndex());
     }
 
@@ -183,13 +183,13 @@ public class AlgorithmEnginesTest {
         List<ExecutionStep> dijkstraSteps = graphEngine.dijkstra(graph, "A");
         assertTraceOrderAndValidity(dijkstraSteps);
 
-        ShortestPathState dState = (ShortestPathState) dijkstraSteps.get(dijkstraSteps.size() - 1).getState();
+        ShortestPathState dState = (ShortestPathState) dijkstraSteps.get(dijkstraSteps.size() - 1).state();
         assertEquals(0.0, ((Number) dState.getDistances().get("A")).doubleValue());
         assertTrue(((Number) dState.getDistances().get("B")).doubleValue() > 0);
 
         List<ExecutionStep> bfSteps = graphEngine.bellmanFord(graph, "A");
         assertTraceOrderAndValidity(bfSteps);
-        ShortestPathState bfState = (ShortestPathState) bfSteps.get(bfSteps.size() - 1).getState();
+        ShortestPathState bfState = (ShortestPathState) bfSteps.get(bfSteps.size() - 1).state();
         assertFalse(bfState.isHasNegativeWeightCycle());
     }
 
@@ -199,12 +199,12 @@ public class AlgorithmEnginesTest {
         GraphData graph = graphEngine.getSampleGraph();
         List<ExecutionStep> kruskalSteps = graphEngine.kruskal(graph);
         assertTraceOrderAndValidity(kruskalSteps);
-        MSTState kState = (MSTState) kruskalSteps.get(kruskalSteps.size() - 1).getState();
+        MSTState kState = (MSTState) kruskalSteps.get(kruskalSteps.size() - 1).state();
         assertEquals(graph.getVertices().size() - 1, kState.getMstEdges().size(), "MST must have |V| - 1 edges");
 
         List<ExecutionStep> primSteps = graphEngine.prim(graph, "A");
         assertTraceOrderAndValidity(primSteps);
-        MSTState pState = (MSTState) primSteps.get(primSteps.size() - 1).getState();
+        MSTState pState = (MSTState) primSteps.get(primSteps.size() - 1).state();
         assertEquals(graph.getVertices().size() - 1, pState.getMstEdges().size());
         assertEquals(kState.getTotalWeight(), pState.getTotalWeight(), "Kruskal and Prim must compute identical MST weight");
     }
@@ -215,11 +215,11 @@ public class AlgorithmEnginesTest {
     void testFactorial() {
         List<ExecutionStep> steps = recursionEngine.factorial(5);
         assertTraceOrderAndValidity(steps);
-        FactorialState state = (FactorialState) steps.get(steps.size() - 1).getState();
+        FactorialState state = (FactorialState) steps.get(steps.size() - 1).state();
         assertEquals(120, state.getResult());
 
         List<ExecutionStep> steps0 = recursionEngine.factorial(0);
-        FactorialState state0 = (FactorialState) steps0.get(steps0.size() - 1).getState();
+        FactorialState state0 = (FactorialState) steps0.get(steps0.size() - 1).state();
         assertEquals(1, state0.getResult());
     }
 
@@ -227,13 +227,13 @@ public class AlgorithmEnginesTest {
     @DisplayName("Fibonacci modes (tabulated, memoized, recursive) yield identical results")
     void testFibonacci() {
         List<ExecutionStep> tabSteps = recursionEngine.fibonacci(6, "tabulated");
-        FibonacciState tabState = (FibonacciState) tabSteps.get(tabSteps.size() - 1).getState();
+        FibonacciState tabState = (FibonacciState) tabSteps.get(tabSteps.size() - 1).state();
 
         List<ExecutionStep> memoSteps = recursionEngine.fibonacci(6, "memoized");
-        FibonacciState memoState = (FibonacciState) memoSteps.get(memoSteps.size() - 1).getState();
+        FibonacciState memoState = (FibonacciState) memoSteps.get(memoSteps.size() - 1).state();
 
         List<ExecutionStep> recSteps = recursionEngine.fibonacci(6, "recursive");
-        FibonacciState recState = (FibonacciState) recSteps.get(recSteps.size() - 1).getState();
+        FibonacciState recState = (FibonacciState) recSteps.get(recSteps.size() - 1).state();
 
         assertEquals(8, tabState.getResult());
         assertEquals(8, memoState.getResult());
@@ -245,7 +245,7 @@ public class AlgorithmEnginesTest {
     void testTowerOfHanoi() {
         List<ExecutionStep> steps = recursionEngine.towerOfHanoi(3);
         assertTraceOrderAndValidity(steps);
-        HanoiState state = (HanoiState) steps.get(steps.size() - 1).getState();
+        HanoiState state = (HanoiState) steps.get(steps.size() - 1).state();
         assertEquals(7, state.getMoveCount()); // 2^3 - 1 = 7
         assertEquals(3, state.getPegs().get("C").size(), "All 3 disks must be on target peg C");
     }
@@ -255,7 +255,7 @@ public class AlgorithmEnginesTest {
     void testNQueens() {
         List<ExecutionStep> steps = recursionEngine.nQueens(4);
         assertTraceOrderAndValidity(steps);
-        NQueensState state = (NQueensState) steps.get(steps.size() - 1).getState();
+        NQueensState state = (NQueensState) steps.get(steps.size() - 1).state();
         assertEquals(2, state.getSolutionsFound(), "4-Queens puzzle has exactly 2 valid solutions");
     }
 
@@ -264,7 +264,7 @@ public class AlgorithmEnginesTest {
     void testKnapsack() {
         List<ExecutionStep> steps = dpEngine.knapsack(null, 5);
         assertTraceOrderAndValidity(steps);
-        KnapsackState state = (KnapsackState) steps.get(steps.size() - 1).getState();
+        KnapsackState state = (KnapsackState) steps.get(steps.size() - 1).state();
         assertTrue(state.getOptimalValue() > 0);
         assertFalse(state.getSelectedItems().isEmpty());
     }
@@ -274,7 +274,7 @@ public class AlgorithmEnginesTest {
     void testLCS() {
         List<ExecutionStep> steps = dpEngine.lcs("STONE", "LONGEST");
         assertTraceOrderAndValidity(steps);
-        LCSState state = (LCSState) steps.get(steps.size() - 1).getState();
+        LCSState state = (LCSState) steps.get(steps.size() - 1).state();
         assertEquals("ONE", state.getLcsResult());
     }
 }

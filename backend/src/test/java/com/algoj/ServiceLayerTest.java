@@ -54,22 +54,21 @@ public class ServiceLayerTest {
     @Test
     @DisplayName("AlgorithmExecutionService executes algorithms with default fallbacks")
     void testAlgorithmExecutionService() {
-        AlgorithmRunRequest req = new AlgorithmRunRequest();
-        req.setAlgorithmId("quick-sort");
-        req.setArray(List.of(45, 10, 89, 2));
+        AlgorithmRunRequest req = new AlgorithmRunRequest(
+                "quick-sort", List.of(45, 10, 89, 2), null, null, null, null, null, null, null, null);
 
         ExecutionTraceResponse res = algorithmService.runAlgorithm(req);
         assertNotNull(res);
-        assertEquals("quick-sort", res.getAlgorithmId());
-        assertTrue(res.getTotalSteps() > 0);
-        assertFalse(res.getSteps().isEmpty());
+        assertEquals("quick-sort", res.algorithmId());
+        assertTrue(res.totalSteps() > 0);
+        assertFalse(res.steps().isEmpty());
     }
 
     @Test
     @DisplayName("AlgorithmExecutionService rejects invalid or missing algorithmId")
     void testAlgorithmExecutionServiceValidation() {
-        AlgorithmRunRequest req = new AlgorithmRunRequest();
-        req.setAlgorithmId("unknown-algo");
+        AlgorithmRunRequest req = new AlgorithmRunRequest(
+                "unknown-algo", null, null, null, null, null, null, null, null, null);
 
         assertThrows(IllegalArgumentException.class, () -> algorithmService.runAlgorithm(req));
         assertThrows(IllegalArgumentException.class, () -> algorithmService.runAlgorithm(null));
@@ -78,15 +77,13 @@ public class ServiceLayerTest {
     @Test
     @DisplayName("DataStructureExecutionService operates structures and produces valid traces")
     void testDataStructureExecutionService() {
-        DataStructureOpRequest req = new DataStructureOpRequest();
-        req.setStructureId("arrays");
-        req.setOperation("access");
-        req.setIndex(0);
+        DataStructureOpRequest req = new DataStructureOpRequest(
+                "arrays", "access", null, 0, null, null, null, null, null);
 
         ExecutionTraceResponse res = dataStructureService.operate(req);
         assertNotNull(res);
-        assertEquals("arrays", res.getAlgorithmId());
-        assertFalse(res.getSteps().isEmpty());
+        assertEquals("arrays", res.algorithmId());
+        assertFalse(res.steps().isEmpty());
 
         Object initial = dataStructureService.getInitialState("linked-lists");
         assertNotNull(initial);
