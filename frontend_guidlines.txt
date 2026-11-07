@@ -1,0 +1,392 @@
+# Build a Complete DSA Visualizer — Neo-Brutalist Frontend
+
+## Project Overview
+
+Build a complete, polished, interactive **Data Structures and Algorithms Visualizer** from scratch.
+
+This is a new project. There is no existing application to redesign, no existing codebase to preserve, and no backend that must be integrated.
+
+Create the initial project structure, establish the design system, implement all required screens, and build the frontend interactions and algorithm visualizations.
+
+The result should be a functional educational web application, not a static mockup or a collection of disconnected UI screens.
+
+## 1. Design Reference and Creative Direction
+
+Use the attached screenshot of the QuickBooks-style "Automatic Payment" dashboard as the primary visual reference.
+
+Translate its visual language into an educational developer tool:
+
+- Bold neo-brutalist design.
+- Warm cream backgrounds.
+- Lavender, butter-yellow, orange, and mint-green color blocking.
+- Thick black outlines.
+- Rounded cards, pill-shaped controls, and circular action buttons.
+- Oversized headings and visually prominent numbers.
+- Strong contrast, generous spacing, and carefully composed layouts.
+- Playful geometric decorations used sparingly.
+
+Preserve the reference's distinctive character without copying its financial dashboard content.
+
+Do not default to a generic SaaS dashboard, a conventional code editor, a purple-gradient AI interface, or a standard Bootstrap-style layout.
+
+The interface should feel like an independent, carefully art-directed educational product.
+
+## 2. Visual Design Tokens
+
+Create a reusable design system using CSS custom properties or an equivalent token system.
+
+Suggested palette:
+
+- Background: `#FAF6EC`
+- Primary ink: `#1A1A1A`
+- Lavender: `#C9B8F5`
+- Orange: `#F5A868`
+- Butter yellow: `#F5D876`
+- Mint green: `#8FD6B0`
+- White: `#FFFFFF`
+
+Define consistent tokens for typography, spacing, radii, borders, animation timing, focus states, and component variants.
+
+Use bold sans-serif display typography, readable body text, and monospaced typography for code and technical information.
+
+Use flat fills, 2–3px dark borders on prominent components, rounded cards, and hard-edged shadows only where useful.
+
+No gradients or excessive decorative effects.
+
+Ensure sufficient contrast, keyboard accessibility, and responsive behavior.
+
+## 3. Technology Stack
+
+Create a maintainable frontend using:
+
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS or a consistent CSS-module/custom-CSS approach.
+- Lucide icons for interface iconography.
+- Motion for React or another suitable animation library.
+- SVG for scalable graph, tree, and node-based visualizations where appropriate.
+
+Choose compatible, stable package versions and configure the project correctly.
+
+Use HTML and CSS for layout, SVG or Canvas where appropriate for visualization, and reusable React components for the interface.
+
+Do not add a backend or database for the initial version. The core experience should work locally in the browser.
+
+Persist small preferences or progress locally only when useful and appropriate.
+
+## 4. Application Structure and Navigation
+
+Build a complete application with the following screens:
+
+### A. Home / Dashboard
+
+Create a striking landing experience with:
+
+- A distinctive product identity and logo treatment.
+- An oversized headline introducing the idea of understanding algorithms visually.
+- A concise, non-cheesy tagline.
+- A prominent CTA to explore algorithms.
+- A visually engaging hero illustration built from actual algorithm or data structure elements.
+- Featured algorithms with animated previews.
+- Category cards for sorting, searching, linear data structures, trees, and graphs.
+- A small overview of available learning experiences.
+- A clear navigation system connecting the application's major sections.
+
+Avoid generic hero layouts. Use strong editorial composition, asymmetric spacing where appropriate, bold typography, and purposeful color blocking.
+
+The landing page should establish the personality of the product immediately.
+
+### B. Algorithm Library
+
+Build a searchable, filterable library of algorithms and data structures.
+
+Organize content into categories:
+
+- Sorting.
+- Searching.
+- Arrays and strings.
+- Linked lists.
+- Stacks and queues.
+- Trees and heaps.
+- Graphs.
+- Recursion and backtracking.
+- Dynamic programming, where implemented.
+
+Each algorithm card should include its name, a short description, difficulty, relevant complexity information, and a small visual preview.
+
+Include category filters, search, and clear actions to open a visualization.
+
+Every card must navigate to a working implementation.
+
+Do not display algorithms that are merely advertised but unavailable.
+
+### C. Interactive Visualization Workspace
+
+This is the most important screen in the entire application.
+
+Design a distinctive workspace with:
+
+- Algorithm title and description.
+- A large visualization canvas.
+- Editable input.
+- Play and pause.
+- Step backward and forward.
+- Reset and replay.
+- Animation speed control.
+- Current execution step and total steps where applicable.
+- A progress timeline.
+- Active code-line highlighting.
+- A pseudocode or source-code panel.
+- Current-operation explanation.
+- Time and space complexity.
+- Relevant operation counters.
+
+Use a layout that feels visually rich but remains easy to understand.
+
+The visualization should receive the greatest visual emphasis. Code and explanations should complement it rather than compete with it.
+
+Make the workspace responsive without sacrificing the clarity of the animation.
+
+## 5. Algorithm Implementations and Animations
+
+Implement real algorithms and connect their actual execution to the visualizations.
+
+**Animations are a central feature, not optional decoration. Use them wherever they improve understanding, especially for algorithms and data structure operations.**
+
+The animation must reflect genuine algorithm state changes. Do not simulate algorithm behavior with arbitrary movement or prewritten decorative sequences.
+
+### Sorting
+
+Implement and visualize:
+
+- Bubble Sort.
+- Selection Sort.
+- Insertion Sort.
+- Merge Sort.
+- Quick Sort.
+- Heap Sort.
+
+Animate comparisons, swaps, shifts, pivots, partitioning, splitting, merging, and sorted regions.
+
+Show relevant indices, comparison counts, swap counts, and write counts.
+
+Use consistent colors to distinguish the active elements, elements being compared, pivots, sorted elements, and temporary buffers.
+
+### Searching
+
+Implement:
+
+- Linear Search.
+- Binary Search.
+
+Animate the search position and active interval. Show eliminated regions, index updates, comparison counts, and the final result.
+
+### Linear data structures
+
+Implement interactive visualizations for:
+
+- Arrays.
+- Singly linked lists.
+- Stacks.
+- Queues.
+
+Support appropriate operations such as access, insertion, deletion, traversal, push, pop, enqueue, and dequeue.
+
+Animate node creation and removal, pointer movement, and changes to the structure.
+
+### Trees and heaps
+
+Implement:
+
+- Binary Search Tree.
+- Tree traversals.
+- Binary Heap.
+
+Animate insertion, search, deletion where implemented, traversal, heapify, swaps, and rotations where relevant.
+
+Render nodes and edges clearly. Recalculate layouts without overlapping elements.
+
+### Graphs
+
+Implement:
+
+- Breadth-First Search.
+- Depth-First Search.
+- Dijkstra's shortest-path algorithm.
+
+Allow users to work with a sample graph and, where practical, create or modify vertices and edges.
+
+Animate traversal order, queue or stack state, distance updates, explored edges, and final paths.
+
+Distinguish unvisited, discovered, active, and visited nodes through consistent visual states.
+
+### Recursion
+
+Where feasible, include a recursion visualizer showing function calls, the call stack, base cases, and return values.
+
+Do not attempt to implement every advanced algorithm at the expense of the quality and correctness of the core visualizations.
+
+## 6. Animation and Execution Architecture
+
+Separate algorithm implementations from visualization components.
+
+Represent execution using a structured sequence of operations or state snapshots.
+
+Each execution step should provide the information required to update:
+
+- The data structure.
+- The visualization.
+- The highlighted code line.
+- The explanation.
+- Operation counters.
+- Relevant indices, pointers, or auxiliary state.
+
+Build a reusable execution engine that supports:
+
+- Deterministic playback.
+- Forward stepping.
+- Backward stepping.
+- Play and pause.
+- Reset.
+- Replay.
+- Adjustable speed.
+- Completion states.
+
+Stepping backward must restore the actual previous state.
+
+Changing speed or pausing must not corrupt execution. Prevent overlapping animations and stale updates.
+
+Keep the animation layer independent of algorithm logic so additional algorithms can be added without rewriting the playback system.
+
+For simple arrays, animate elements with smooth transforms and color transitions. For trees and graphs, animate nodes, edges, highlights, and layout changes using SVG or another suitable rendering approach.
+
+Use consistent easing and purposeful timing. Respect reduced-motion preferences and provide immediate state inspection without animation.
+
+## 7. Code and Explanation Synchronization
+
+The active code line must correspond to the operation currently being visualized.
+
+Display:
+
+- Readable pseudocode or source code.
+- The active line.
+- The current operation and its explanation.
+- Relevant indices and variables.
+- The current data structure state.
+- Complexity information.
+
+For example, during Binary Search, when the middle element is compared with the target, the visualizer should highlight that element and the corresponding comparison in the pseudocode.
+
+During Merge Sort, the displayed state should explain which two sorted subarrays are being merged and why a particular element is selected.
+
+The goal is to make the relationship between code and visual behavior immediately understandable.
+
+## 8. Algorithm Comparison Mode
+
+Create a comparison screen for compatible algorithms.
+
+Allow users to select two algorithms and provide equivalent input data.
+
+Display side-by-side visualizations, independent or synchronized playback, relevant operation counts, and theoretical complexity.
+
+Keep both visualizations under the same design system.
+
+Distinguish theoretical complexity from measured runtime. Do not make misleading performance claims or compare incompatible operations as though they were equivalent.
+
+## 9. Learning Experience
+
+Each algorithm should have an accompanying information panel or learning view containing:
+
+- What the algorithm does.
+- The intuition behind it.
+- How it works step by step.
+- Pseudocode.
+- Time and space complexity.
+- Best, average, and worst cases where meaningful.
+- Important edge cases.
+- Advantages and limitations.
+
+Use concise explanations, numbered steps, diagrams, and highlighted examples.
+
+Keep the explanations synchronized with execution wherever practical.
+
+Make the product useful for both beginners learning a concept for the first time and students revising an algorithm before an exam or interview.
+
+## 10. Reusable Component Architecture
+
+Create reusable components, including:
+
+- `AppLayout`
+- `NavBar`
+- `HeroSection`
+- `AlgorithmCard`
+- `CategoryFilter`
+- `SearchBar`
+- `VisualizationCanvas`
+- `ArrayVisualizer`
+- `LinkedListVisualizer`
+- `TreeVisualizer`
+- `GraphVisualizer`
+- `PlaybackControls`
+- `SpeedControl`
+- `ExecutionTimeline`
+- `CodePanel`
+- `ComplexityPanel`
+- `OperationCounter`
+- `InputEditor`
+- `ComparisonWorkspace`
+- `EmptyState`
+- `ErrorState`
+
+Adapt these components to the needs of each algorithm instead of forcing all visualizations into one generic component.
+
+Use shared design tokens and consistent component variants throughout the application.
+
+## 11. Interaction and Responsive Design
+
+Every visible interactive control must work.
+
+Implement functional navigation, search, filtering, algorithm selection, editable inputs, playback controls, and data structure operations.
+
+Provide validation and understandable error messages for invalid inputs.
+
+Support desktop, tablet, and mobile layouts.
+
+On mobile, stack the visualization and supporting panels logically, keep essential controls accessible, and prevent horizontal overflow.
+
+Add keyboard navigation, accessible labels, visible focus states, and sufficient hit targets.
+
+Use clear empty, loading, error, and completion states.
+
+Do not create fake buttons, dead links, or interactions that only change their appearance without performing the promised action.
+
+## 12. Implementation Plan
+
+Build the application incrementally:
+
+1. Initialize the project and configure the development environment.
+2. Establish the design tokens, typography, navigation, and shared components.
+3. Implement the home page and algorithm library.
+4. Build the reusable visualization workspace and execution engine.
+5. Implement sorting and searching algorithms with correct, reversible playback.
+6. Add linear data structures and their animated operations.
+7. Add trees, heaps, and graphs.
+8. Implement code highlighting, explanations, and complexity panels.
+9. Add comparison mode and learning views.
+10. Refine animation quality, responsiveness, accessibility, and visual details.
+11. Test the application end to end and fix functional or visual regressions.
+
+Prioritize a smaller number of completely working, beautifully animated visualizations over a large collection of incomplete ones.
+
+## 13. Final Quality Standard
+
+The finished application should feel like a thoughtfully art-directed educational product.
+
+Its design should be memorable, colorful, expressive, and unmistakably inspired by the provided neo-brutalist reference.
+
+Its functionality should be technically correct, interactive, accessible, and maintainable.
+
+Its animations should reveal the mechanics of computation rather than merely decorate the interface.
+
+**Build the complete frontend from scratch. Do not assume an existing application, do not stop at a landing page, and do not substitute static mockups for working algorithm visualizations.**

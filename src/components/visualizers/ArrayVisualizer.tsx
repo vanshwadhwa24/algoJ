@@ -1,0 +1,126 @@
+import React from 'react';
+import { SortElement } from '../../engine/sorting/types';
+import { SearchElement } from '../../engine/searching/types';
+
+interface ArrayVisualizerProps {
+  elements: (SortElement | SearchElement)[];
+  comparingIndices?: number[];
+  swappingIndices?: number[];
+  pivotIndex?: number | null;
+  sortedIndices?: number[];
+  lowIndex?: number | null;
+  highIndex?: number | null;
+  midIndex?: number | null;
+  currentIndex?: number | null;
+  foundIndex?: number | null;
+}
+
+export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
+  elements,
+  comparingIndices = [],
+  swappingIndices = [],
+  pivotIndex = null,
+  sortedIndices = [],
+  lowIndex = null,
+  highIndex = null,
+  midIndex = null,
+  currentIndex = null,
+  foundIndex = null,
+}) => {
+  if (!elements || elements.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-64 text-gray-500 font-bold">
+        Empty Array
+      </div>
+    );
+  }
+
+  // Find min and max value for height scaling
+  const values = elements.map((e) => e.value);
+  const minVal = Math.min(...values, 0);
+  const maxVal = Math.max(...values, 100);
+  const range = maxVal - minVal || 1;
+
+  return (
+    <div className="flex flex-col items-center justify-end h-72 sm:h-80 w-full p-4 overflow-x-auto">
+      {/* Bars container */}
+      <div className="flex items-end justify-center gap-2 sm:gap-3 w-full h-56">
+        {elements.map((el, idx) => {
+          const val = el.value;
+          // Normalized height between 24px and 190px
+          const barHeight = Math.max(28, Math.round(((val - minVal) / range) * 160 + 28));
+
+          // Determine color & status
+          let bgColor = 'bg-white';
+          let borderColor = 'border-[#1A1A1A]';
+          let textColor = 'text-[#1A1A1A]';
+          let labelBadge: string | null = null;
+
+          if (idx === foundIndex || el.state === 'found') {
+            bgColor = 'bg-[#8FD6B0]'; // Mint green
+            labelBadge = 'FOUND';
+          } else if (idx === pivotIndex || el.state === 'pivot') {
+            bgColor = 'bg-[#C9B8F5]'; // Lavender
+            labelBadge = 'PIVOT';
+          } else if (idx === midIndex || el.state === 'mid') {
+            bgColor = 'bg-[#F5A868]'; // Orange
+            labelBadge = 'MID';
+          } else if (swappingIndices.includes(idx) || el.state === 'swapping') {
+            bgColor = 'bg-[#F5A868]'; // Orange
+            labelBadge = 'SWAP';
+          } else if (comparingIndices.includes(idx) || el.state === 'comparing' || idx === currentIndex) {
+            bgColor = 'bg-[#F5D876]'; // Yellow
+            labelBadge = 'COMPARE';
+          } else if (sortedIndices.includes(idx) || el.state === 'sorted') {
+            bgColor = 'bg-[#8FD6B0]'; // Mint
+          } else if (el.state === 'eliminated') {
+            bgColor = 'bg-gray-200 opacity-40';
+          }
+
+          // Special pointer labels
+          const pointers: string[] = [];
+          if (idx === lowIndex) pointers.push('LOW');
+          if (idx === highIndex) pointers.push('HIGH');
+
+          return (
+            <div key={el.id || idx} className="flex flex-col items-center flex-1 max-w-[56px] min-w-[32px]">
+              {/* Optional role badge above bar */}
+              <div className="h-5 flex items-center justify-center text-[10px] font-black tracking-wider uppercase mb-1">
+                {labelBadge && (
+                  <span className="bg-[#1A1A1A] text-white px-1.5 py-0.5 rounded text-[9px]">
+                    {labelBadge}
+                  </span>
+                )}
+              </div>
+
+              {/* The Visual Bar */}
+              <div
+                style={{ height: `${barHeight}px` }}
+                className={`w-full rounded-2xl border-[2.5px] ${borderColor} ${bgColor} ${textColor} shadow-[3px_3px_0px_#1A1A1A] flex flex-col justify-between items-center py-2 transition-all duration-200 select-none`}
+              >
+                <span className="font-mono font-black text-xs sm:text-sm">
+                  {val}
+                </span>
+                <span className="text-[10px] font-bold opacity-60">
+                  #{idx}
+                </span>
+              </div>
+
+              {/* Pointer tags below index */}
+              <div className="h-5 mt-1 flex flex-wrap gap-0.5 justify-center">
+                {pointers.map((p) => (
+                  <span
+                    key={p}
+                    className="text-[9px] font-black px-1 rounded bg-[#F5D876] border border-[#1A1A1A]"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
