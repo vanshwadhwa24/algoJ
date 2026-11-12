@@ -99,7 +99,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
 
           {/* Tagline */}
           <p className="text-base sm:text-xl font-medium text-white/85 leading-relaxed max-w-2xl">
-            A warm geometric educational platform where every sorting pass, tree rotation, and dynamic programming cell is rendered with genuine state execution and reversible time-travel stepping.
+            An interactive learning platform where every sorting pass, tree rotation, and dynamic programming cell is rendered with genuine state execution and reversible time-travel stepping.
           </p>
 
           {/* Action Buttons */}
@@ -147,9 +147,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
         </BrutalistCard>
 
         <BrutalistCard bgColor="terra" shadow="md" className="p-4 text-center">
-          <span className="text-3xl sm:text-4xl font-black font-mono block">125</span>
+          <span className="text-3xl sm:text-4xl font-black font-mono block">5</span>
           <span className="text-xs font-black uppercase text-[#2B2620] tracking-wider">
-            Verified Unit Tests
+            Study Modes
           </span>
         </BrutalistCard>
       </section>

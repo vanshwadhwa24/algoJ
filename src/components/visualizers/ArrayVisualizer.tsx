@@ -84,8 +84,8 @@ export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
 
           return (
             <div key={el.id || idx} className="flex flex-col items-center flex-1 max-w-[56px] min-w-[32px]">
-              {/* Optional role badge above bar */}
-              <div className="h-5 flex items-center justify-center text-[10px] font-black tracking-wider uppercase mb-1">
+              {/* Optional role badge above bar; adjacent labels stagger into two lanes so they never collide */}
+              <div className={`h-10 flex ${idx % 2 === 1 ? 'items-start' : 'items-end'} justify-center text-[10px] font-black tracking-wider uppercase mb-1`}>
                 {labelBadge && (
                   <span className="bg-[#2B2620] text-white px-1.5 py-0.5 rounded text-[9px]">
                     {labelBadge}
