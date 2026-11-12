@@ -2,7 +2,7 @@ import React from 'react';
 
 interface PillBadgeProps {
   children: React.ReactNode;
-  variant?: 'mint' | 'yellow' | 'lavender' | 'orange' | 'white' | 'ink' | 'outline';
+  variant?: 'sage' | 'mustard' | 'teal' | 'terra' | 'white' | 'ink' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   onClick?: () => void;
@@ -18,14 +18,14 @@ export const PillBadge: React.FC<PillBadgeProps> = ({
   active = false,
 }) => {
   const variantStyles = {
-    mint: 'bg-[#8FD6B0] text-[#1A1A1A]',
-    yellow: 'bg-[#F5D876] text-[#1A1A1A]',
-    lavender: 'bg-[#C9B8F5] text-[#1A1A1A]',
-    orange: 'bg-[#F5A868] text-[#1A1A1A]',
-    white: 'bg-white text-[#1A1A1A]',
-    ink: 'bg-[#1A1A1A] text-white',
-    outline: 'bg-transparent text-[#1A1A1A]',
-  }[active ? 'mint' : variant];
+    sage: 'bg-[#9CCBA2] text-[#2B2620]',
+    mustard: 'bg-[#DFA43C] text-[#2B2620]',
+    teal: 'bg-[#8FB5AD] text-[#2B2620]',
+    terra: 'bg-[#D97B54] text-[#2B2620]',
+    white: 'bg-white text-[#2B2620]',
+    ink: 'bg-[#2B2620] text-white',
+    outline: 'bg-transparent text-[#2B2620]',
+  }[active ? 'sage' : variant];
 
   const sizeStyles = {
     sm: 'text-xs px-2.5 py-1',
@@ -36,9 +36,9 @@ export const PillBadge: React.FC<PillBadgeProps> = ({
   return (
     <span
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 font-bold rounded-full border-[2px] border-[#1A1A1A] select-none transition-all ${variantStyles} ${sizeStyles} ${
+      className={`inline-flex items-center gap-1.5 font-bold rounded-full select-none transition-all ${variantStyles} ${sizeStyles} ${
         onClick
-          ? 'cursor-pointer hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-none shadow-[2px_2px_0px_#1A1A1A]'
+          ? 'cursor-pointer hover:-translate-y-0.5 active:translate-y-0.5 shadow-[0_3px_10px_rgba(43,38,32,0.16)]'
           : ''
       } ${className}`}
     >

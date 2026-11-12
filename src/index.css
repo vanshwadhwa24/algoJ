@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --bg-warm: #FAF6EC;
-  --ink: #1A1A1A;
-  --lavender: #C9B8F5;
-  --orange: #F5A868;
-  --yellow: #F5D876;
-  --mint: #8FD6B0;
+  --bg-warm: #F7EFE1;
+  --ink: #2B2620;
+  --teal-soft: #8FB5AD;
+  --terra: #D97B54;
+  --mustard: #DFA43C;
+  --sage: #9CCBA2;
+  --terra-deep: #C25A35;
+  --teal-deep: #33706A;
   --card-white: #FFFFFF;
-  --border-dark: #1A1A1A;
+  --border-dark: #2B2620;
 }
 
 body {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #FAF6EC;
-  color: #1A1A1A;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #F7EFE1;
+  color: #2B2620;
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -24,48 +26,17 @@ code, pre, .font-mono {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Neo-brutalist design utilities */
-.neo-border {
-  border: 2.5px solid #1A1A1A;
+/* Warm geometric design utilities */
+.warm-shadow-sm {
+  box-shadow: 0 3px 10px rgba(43, 38, 32, 0.16);
 }
 
-.neo-border-thin {
-  border: 1.5px solid #1A1A1A;
+.warm-shadow {
+  box-shadow: 0 8px 20px -6px rgba(43, 38, 32, 0.22);
 }
 
-.neo-shadow-sm {
-  box-shadow: 2px 2px 0px #1A1A1A;
-}
-
-.neo-shadow {
-  box-shadow: 4px 4px 0px #1A1A1A;
-}
-
-.neo-shadow-lg {
-  box-shadow: 6px 6px 0px #1A1A1A;
-}
-
-.neo-btn {
-  border: 2.5px solid #1A1A1A;
-  box-shadow: 3px 3px 0px #1A1A1A;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.neo-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px #1A1A1A;
-}
-
-.neo-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #1A1A1A;
-}
-
-.neo-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: 2px 2px 0px #1A1A1A;
+.warm-shadow-lg {
+  box-shadow: 0 12px 28px -8px rgba(43, 38, 32, 0.25);
 }
 
 /* Custom scrollbars */
@@ -74,9 +45,9 @@ code, pre, .font-mono {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF6EC;
+  background: #F7EFE1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1A;
+  background: #2B2620;
   border-radius: 4px;
 }

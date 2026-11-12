@@ -1,6 +1,6 @@
 # AlgoJ — Interactive Data Structures & Algorithms Visualizer
 
-**AlgoJ** is a full-stack Data Structures and Algorithms visualizer and educational platform built with a bold **Neo-Brutalist** aesthetic.
+**AlgoJ** is a full-stack Data Structures and Algorithms visualizer and educational platform built with a **Warm Geometric** aesthetic.
 
 The application features:
 - **Authoritative Algorithm Execution in Java**: All data structures, sorting algorithms, searching routines, tree traversals, graph algorithms, recursion, and dynamic programming engines are implemented authoritatively in **Java 17 with Spring Boot**.
@@ -14,7 +14,7 @@ The application features:
 
 ```mermaid
 graph TD
-    Client["React + TypeScript Frontend\n(Port 5173)\n- Neo-Brutalist Visualizers\n- Reversible Playback Engine\n- Learning & Comparison Arena"]
+    Client["React + TypeScript Frontend\n(Port 5173)\n- Warm Geometric Visualizers\n- Reversible Playback Engine\n- Learning & Comparison Arena"]
     API["REST API (JSON over HTTP)\n- CORS Configured\n- Request Validation"]
     Backend["Java Spring Boot Backend\n(Port 8080 · OpenJDK 17)\n- SortingEngine\n- SearchingEngine\n- LinearStructureEngine\n- Tree & Heap Engines\n- GraphAlgorithmEngine\n- Recursion & DPEngine"]
 
@@ -29,9 +29,9 @@ graph TD
 
 ## 🎨 Visual Identity & Design System
 
-- **Neo-Brutalist Visuals**: Warm cream (`#FAF6EC`) background, 2.5px solid dark ink borders (`#1A1A1A`), tactile drop shadows (`4px 4px 0 #1A1A1A`), rounded cards (`rounded-3xl`), and multi-point starburst accents.
-- **Harmonious Pastel Blocking**: Lavender (`#C9B8F5`), Butter Yellow (`#F5D876`), Soft Mint Green (`#8FD6B0`), Warm Orange (`#F5A868`), and Crisp White (`#FFFFFF`).
-- **Typography**: Display typography using `Outfit` combined with monospace code in `JetBrains Mono`.
+- **Warm Geometric Visuals**: Soft cream (`#F7EFE1`) background, borderless color-blocked cards with generous radii (`rounded-3xl`), diffuse warm shadows, and geometric circle, semicircle, and arc accents.
+- **Terracotta Palette**: Terracotta (`#C25A35`, `#D97B54`), Mustard (`#DFA43C`), Deep & Soft Teal (`#33706A`, `#8FB5AD`), Sage (`#9CCBA2`), and Crisp White (`#FFFFFF`).
+- **Typography**: Display typography using `Poppins` combined with monospace code in `JetBrains Mono`.
 - **Live Status Indicator**: Visual pill displaying real-time connection status with the Java Spring Boot backend (`Java Backend: Connected (Spring Boot · OpenJDK 17)`).
 
 ---

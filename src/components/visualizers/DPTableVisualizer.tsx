@@ -38,12 +38,12 @@ export const DPTableVisualizer: React.FC<DPTableVisualizerProps> = ({
     <div className="flex flex-col items-center w-full p-4 space-y-4">
       {/* Solution Banner */}
       {(optimalValue !== undefined || reconstructedResult || selectedItems) && (
-        <div className="flex flex-wrap items-center gap-3 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] px-4 py-2 rounded-2xl shadow-[2px_2px_0px_#1A1A1A] text-xs font-bold">
+        <div className="flex flex-wrap items-center gap-3 bg-[#F7EFE1] border border-[#E8DCC4] px-4 py-2 rounded-2xl shadow-[0_3px_10px_rgba(43,38,32,0.16)] text-xs font-bold">
           {optimalValue !== undefined && (
             <span>Optimal Value: <strong className="text-green-700 font-mono text-sm">{optimalValue}</strong></span>
           )}
           {selectedItems && selectedItems.length > 0 && (
-            <span>Items Selected: <strong className="text-[#1A1A1A]">[{selectedItems.join(', ')}]</strong></span>
+            <span>Items Selected: <strong className="text-[#2B2620]">[{selectedItems.join(', ')}]</strong></span>
           )}
           {reconstructedResult && (
             <span>LCS String: <strong className="text-purple-700 font-mono text-sm">"{reconstructedResult}"</strong></span>
@@ -53,17 +53,17 @@ export const DPTableVisualizer: React.FC<DPTableVisualizerProps> = ({
 
       {/* 2D DP Table Grid */}
       <div className="w-full overflow-x-auto max-h-[340px] flex justify-center">
-        <table className="border-collapse font-mono text-xs border-[2.5px] border-[#1A1A1A] bg-white rounded-xl shadow-[4px_4px_0px_#1A1A1A]">
+        <table className="border-collapse font-mono text-xs border border-[#E8DCC4] bg-white rounded-xl shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)]">
           <thead>
             <tr>
-              <th className="p-2 border border-gray-300 bg-[#FAF6EC] font-bold text-gray-500">
+              <th className="p-2 border border-gray-300 bg-[#F7EFE1] font-bold text-gray-500">
                 i \ j
               </th>
               {safeColLabels.map((col, cIdx) => (
                 <th
                   key={cIdx}
                   className={`p-2 border border-gray-300 font-black text-center min-w-[38px] ${
-                    cIdx === currentCol ? 'bg-[#F5D876]' : 'bg-[#FAF6EC]'
+                    cIdx === currentCol ? 'bg-[#DFA43C]' : 'bg-[#F7EFE1]'
                   }`}
                 >
                   {col}
@@ -76,7 +76,7 @@ export const DPTableVisualizer: React.FC<DPTableVisualizerProps> = ({
               <tr key={rIdx}>
                 <td
                   className={`p-2 border border-gray-300 font-black text-center ${
-                    rIdx === currentRow ? 'bg-[#F5D876]' : 'bg-[#FAF6EC]'
+                    rIdx === currentRow ? 'bg-[#DFA43C]' : 'bg-[#F7EFE1]'
                   }`}
                 >
                   {safeRowLabels[rIdx] || rIdx}
@@ -88,8 +88,8 @@ export const DPTableVisualizer: React.FC<DPTableVisualizerProps> = ({
                   );
 
                   let cellBg = 'bg-white';
-                  if (isCurrent) cellBg = 'bg-[#8FD6B0] font-black text-sm'; // Mint active
-                  else if (isDependency) cellBg = 'bg-[#C9B8F5] font-black'; // Lavender dependency
+                  if (isCurrent) cellBg = 'bg-[#9CCBA2] font-black text-sm'; // Mint active
+                  else if (isDependency) cellBg = 'bg-[#8FB5AD] font-black'; // Lavender dependency
 
                   return (
                     <td

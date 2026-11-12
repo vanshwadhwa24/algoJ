@@ -31,17 +31,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-4 z-50 px-4 md:px-8 max-w-7xl mx-auto w-full">
-      <div className="bg-[#1A1A1A] text-white p-2 md:p-2.5 rounded-full border-[2.5px] border-[#1A1A1A] shadow-[4px_4px_0px_#1A1A1A] flex items-center justify-between gap-2">
+      <div className="bg-white text-[#2B2620] p-2 md:p-2.5 rounded-full shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] flex items-center justify-between gap-2">
         {/* Brand Logo */}
         <button
           onClick={() => onSelectTab('home')}
           className="flex items-center gap-2 pl-3 pr-2 py-1 cursor-pointer focus:outline-none"
         >
-          <div className="w-8 h-8 rounded-full bg-[#F5D876] border-[2px] border-white flex items-center justify-center font-black text-[#1A1A1A] text-base shadow-[1px_1px_0px_#fff]">
+          <div className="w-8 h-8 rounded-full bg-[#DFA43C] flex items-center justify-center font-black text-[#2B2620] text-base">
             α
           </div>
-          <span className="font-extrabold text-lg tracking-tight hidden sm:inline text-white">
-            Algo<span className="text-[#8FD6B0]">J</span>
+          <span className="font-extrabold text-lg tracking-tight hidden sm:inline text-[#2B2620]">
+            Algo<span className="text-[#C25A35]">J</span>
           </span>
         </button>
 
@@ -55,8 +55,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onSelectTab(tab.id)}
                 className={`flex items-center gap-1.5 px-3.5 sm:px-5 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer select-none whitespace-nowrap ${
                   isActive
-                    ? 'bg-[#8FD6B0] text-[#1A1A1A] border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#1A1A1A]'
-                    : 'text-gray-300 hover:text-white hover:bg-[#2A2A2A]'
+                    ? 'bg-[#C25A35] text-white shadow-[0_3px_10px_rgba(43,38,32,0.16)]'
+                    : 'text-[#6B6154] hover:text-[#2B2620] hover:bg-[#F7EFE1]'
                 }`}
               >
                 {tab.icon}
@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-2 pr-1.5">
           <button
             onClick={() => onSelectTab('practice')}
-            className="flex items-center gap-1.5 bg-[#F5A868] text-[#1A1A1A] font-extrabold text-xs px-3 py-1.5 rounded-full border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#1A1A1A] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            className="flex items-center gap-1.5 bg-[#33706A] text-white font-extrabold text-xs px-3 py-1.5 rounded-full shadow-[0_3px_10px_rgba(43,38,32,0.16)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             title="Practice Quiz Points"
           >
             <Sparkles className="w-3.5 h-3.5" />

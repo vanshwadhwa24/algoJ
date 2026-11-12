@@ -40,7 +40,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF6EC] text-[#1A1A1A] flex flex-col font-sans selection:bg-[#F5D876]">
+    <div className="min-h-screen bg-[#F7EFE1] text-[#2B2620] flex flex-col font-sans selection:bg-[#DFA43C]">
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab}
@@ -89,18 +89,18 @@ export const App: React.FC = () => {
       </main>
 
       {/* Educational Neo-Brutalist Footer */}
-      <footer className="border-t-[3px] border-[#1A1A1A] bg-white py-10 px-4 md:px-8 mt-auto">
+      <footer className="border-t-[3px] border-[#2B2620] bg-white py-10 px-4 md:px-8 mt-auto">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#8FD6B0] border-[2px] border-[#1A1A1A] flex items-center justify-center font-black text-sm shadow-[2px_2px_0px_#1A1A1A]">
+            <div className="w-8 h-8 rounded-full bg-[#9CCBA2] border-2 border-[#2B2620] flex items-center justify-center font-black text-sm shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
               α
             </div>
             <div>
-              <span className="font-extrabold text-base tracking-tight text-[#1A1A1A]">
-                Algo<span className="text-[#8FD6B0]">J</span> Visualizer
+              <span className="font-extrabold text-base tracking-tight text-[#2B2620]">
+                Algo<span className="text-[#9CCBA2]">J</span> Visualizer
               </span>
               <p className="text-xs font-bold text-gray-500">
-                Interactive Neo-Brutalist Data Structures & Algorithms Suite
+                Interactive Warm Geometric Data Structures & Algorithms Suite
               </p>
             </div>
           </div>

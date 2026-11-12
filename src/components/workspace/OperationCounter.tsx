@@ -18,11 +18,11 @@ export const OperationCounter: React.FC<OperationCounterProps> = ({ counters }) 
         return (
           <div
             key={key}
-            className="flex items-center gap-2 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] rounded-full px-3 py-1 text-xs font-bold shadow-[2px_2px_0px_#1A1A1A]"
+            className="flex items-center gap-2 bg-[#F7EFE1] border border-[#E8DCC4] rounded-full px-3 py-1 text-xs font-bold shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
           >
-            <Activity className="w-3.5 h-3.5 text-[#1A1A1A]" />
+            <Activity className="w-3.5 h-3.5 text-[#2B2620]" />
             <span className="text-gray-600">{formattedKey}:</span>
-            <span className="font-mono font-black text-[#1A1A1A]">{val}</span>
+            <span className="font-mono font-black text-[#2B2620]">{val}</span>
           </div>
         );
       })}

@@ -19,7 +19,7 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
 
   if (questions.length === 0) {
     return (
-      <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[24px] p-6 shadow-[4px_4px_0px_#1A1A1A] text-center text-gray-500 font-bold">
+      <div className="bg-white border border-[#E8DCC4] rounded-[24px] p-6 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] text-center text-gray-500 font-bold">
         No practice questions available for this algorithm. Check the Algorithm Library!
       </div>
     );
@@ -42,23 +42,23 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
         particleCount: 45,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#8FD6B0', '#F5D876', '#C9B8F5', '#F5A868'],
+        colors: ['#9CCBA2', '#DFA43C', '#8FB5AD', '#D97B54'],
       });
       onScoreUpdate(userScore + 10);
     }
   };
 
   return (
-    <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[24px] p-5 shadow-[4px_4px_0px_#1A1A1A] space-y-6">
+    <div className="bg-white border border-[#E8DCC4] rounded-[24px] p-5 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] space-y-6">
       <div className="flex items-center justify-between border-b pb-3 border-gray-200">
         <div className="flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-[#1A1A1A]" />
-          <h3 className="font-extrabold text-base text-[#1A1A1A]">
+          <HelpCircle className="w-5 h-5 text-[#2B2620]" />
+          <h3 className="font-extrabold text-base text-[#2B2620]">
             Practice & Knowledge Check
           </h3>
         </div>
-        <div className="flex items-center gap-1.5 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] px-3 py-1 rounded-full text-xs font-black shadow-[2px_2px_0px_#1A1A1A]">
-          <Sparkles className="w-3.5 h-3.5 text-[#F5A868]" />
+        <div className="flex items-center gap-1.5 bg-[#F7EFE1] border border-[#E8DCC4] px-3 py-1 rounded-full text-xs font-black shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
+          <Sparkles className="w-3.5 h-3.5 text-[#D97B54]" />
           <span>{userScore} Total Points</span>
         </div>
       </div>
@@ -72,9 +72,9 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
           return (
             <div
               key={q.id}
-              className="p-4 rounded-2xl border-[2px] border-[#1A1A1A] bg-[#FAF6EC] shadow-[2px_2px_0px_#1A1A1A] space-y-3"
+              className="p-4 rounded-2xl border border-[#E8DCC4] bg-[#F7EFE1] shadow-[0_3px_10px_rgba(43,38,32,0.16)] space-y-3"
             >
-              <div className="font-bold text-sm text-[#1A1A1A]">
+              <div className="font-bold text-sm text-[#2B2620]">
                 <span className="text-gray-500 mr-1.5">Q{qIndex + 1}:</span>
                 {q.question}
               </div>
@@ -83,16 +83,16 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
               <div className="space-y-2">
                 {q.options.map((opt, optIdx) => {
                   const isSelected = userChoice === optIdx;
-                  let optStyle = 'bg-white hover:bg-gray-50 text-[#1A1A1A] border-gray-300';
+                  let optStyle = 'bg-white hover:bg-gray-50 text-[#2B2620] border-gray-300';
 
                   if (isAnswered) {
                     if (optIdx === q.correctIndex) {
-                      optStyle = 'bg-[#8FD6B0] text-[#1A1A1A] font-black border-[#1A1A1A]';
+                      optStyle = 'bg-[#9CCBA2] text-[#2B2620] font-black border-[#2B2620]';
                     } else if (isSelected && !isCorrect) {
-                      optStyle = 'bg-[#F5A868] text-[#1A1A1A] line-through border-[#1A1A1A]';
+                      optStyle = 'bg-[#D97B54] text-[#2B2620] line-through border-[#2B2620]';
                     }
                   } else if (isSelected) {
-                    optStyle = 'bg-[#F5D876] text-[#1A1A1A] font-bold border-[#1A1A1A]';
+                    optStyle = 'bg-[#DFA43C] text-[#2B2620] font-bold border-[#2B2620]';
                   }
 
                   return (
@@ -100,7 +100,7 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
                       key={optIdx}
                       onClick={() => handleSelectOption(q.id, optIdx)}
                       disabled={isAnswered}
-                      className={`w-full text-left px-3.5 py-2.5 rounded-xl border-[2px] text-xs font-semibold transition-all cursor-pointer flex items-center justify-between ${optStyle}`}
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl border-2 text-xs font-semibold transition-all cursor-pointer flex items-center justify-between ${optStyle}`}
                     >
                       <span>{opt}</span>
                       {isAnswered && optIdx === q.correctIndex && (
@@ -120,14 +120,14 @@ export const PracticeMode: React.FC<PracticeModeProps> = ({
                   <button
                     onClick={() => handleSubmit(q)}
                     disabled={userChoice === undefined}
-                    className="self-end px-4 py-1.5 rounded-full bg-[#1A1A1A] text-white text-xs font-bold border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#8FD6B0] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                    className="self-end px-4 py-1.5 rounded-full bg-[#2B2620] text-white text-xs font-bold border border-[#E8DCC4] shadow-[0_3px_10px_rgba(43,38,32,0.16)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                   >
                     Check Answer
                   </button>
                 ) : (
                   <div
-                    className={`p-3 rounded-xl border-[1.5px] border-[#1A1A1A] text-xs font-semibold leading-relaxed ${
-                      isCorrect ? 'bg-[#8FD6B0]/25 text-green-950' : 'bg-[#F5A868]/25 text-orange-950'
+                    className={`p-3 rounded-xl border-[1.5px] border-[#2B2620] text-xs font-semibold leading-relaxed ${
+                      isCorrect ? 'bg-[#9CCBA2]/25 text-green-950' : 'bg-[#D97B54]/25 text-orange-950'
                     }`}
                   >
                     <strong className="block mb-1">

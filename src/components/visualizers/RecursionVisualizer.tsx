@@ -28,21 +28,21 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
             return (
               <div key={peg} className="flex flex-col items-center">
                 {/* Peg Post */}
-                <div className="relative w-full flex flex-col-reverse items-center h-44 border-b-[4px] border-[#1A1A1A]">
+                <div className="relative w-full flex flex-col-reverse items-center h-44 border-b-[4px] border-[#2B2620]">
                   {/* Vertical Rod */}
-                  <div className="absolute bottom-0 w-2 h-40 bg-[#1A1A1A] rounded-t-full -z-10" />
+                  <div className="absolute bottom-0 w-2 h-40 bg-[#2B2620] rounded-t-full -z-10" />
 
                   {/* Disks stacked bottom-to-top */}
                   {disks.map((d) => {
                     const widthPx = 30 + d * 22;
-                    const colors = ['#C9B8F5', '#F5D876', '#8FD6B0', '#F5A868', '#FFFFFF'];
+                    const colors = ['#8FB5AD', '#DFA43C', '#9CCBA2', '#D97B54', '#FFFFFF'];
                     const color = colors[(d - 1) % colors.length];
 
                     return (
                       <div
                         key={d}
                         style={{ width: `${widthPx}px`, backgroundColor: color }}
-                        className="h-7 rounded-xl border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#1A1A1A] flex items-center justify-center font-mono font-black text-xs select-none transition-all duration-200 mb-1 z-10"
+                        className="h-7 rounded-xl border border-[#E8DCC4] shadow-[0_3px_10px_rgba(43,38,32,0.16)] flex items-center justify-center font-mono font-black text-xs select-none transition-all duration-200 mb-1 z-10"
                       >
                         {d}
                       </div>
@@ -50,7 +50,7 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
                   })}
                 </div>
 
-                <div className="mt-2 font-mono font-black text-sm bg-[#FAF6EC] border-[2px] border-[#1A1A1A] px-3 py-1 rounded-full shadow-[2px_2px_0px_#1A1A1A]">
+                <div className="mt-2 font-mono font-black text-sm bg-[#F7EFE1] border border-[#E8DCC4] px-3 py-1 rounded-full shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
                   Peg {peg}
                 </div>
               </div>
@@ -66,12 +66,12 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
     <div className="flex flex-col sm:flex-row gap-6 items-start justify-center w-full p-4">
       {/* Call Stack Panel */}
       {callStack && (
-        <div className="flex-1 w-full max-w-md bg-white border-[2.5px] border-[#1A1A1A] rounded-2xl p-4 shadow-[4px_4px_0px_#1A1A1A]">
+        <div className="flex-1 w-full max-w-md bg-white border border-[#E8DCC4] rounded-2xl p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)]">
           <h4 className="font-black text-xs uppercase text-gray-500 mb-3">
             Execution Call Stack (Top = Active Frame)
           </h4>
 
-          <div className="flex flex-col-reverse gap-2 min-h-[160px] max-h-[260px] overflow-y-auto p-2 border-[2px] border-dashed border-[#1A1A1A] rounded-xl bg-[#FAF6EC]">
+          <div className="flex flex-col-reverse gap-2 min-h-[160px] max-h-[260px] overflow-y-auto p-2 border-2 border-dashed border-[#2B2620] rounded-xl bg-[#F7EFE1]">
             {callStack.length === 0 ? (
               <span className="m-auto text-xs font-bold text-gray-400">
                 Call stack is empty
@@ -82,11 +82,11 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
                 return (
                   <div
                     key={frame.id}
-                    className={`p-2.5 rounded-xl border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#1A1A1A] flex items-center justify-between text-xs font-mono font-black ${
+                    className={`p-2.5 rounded-xl border border-[#E8DCC4] shadow-[0_3px_10px_rgba(43,38,32,0.16)] flex items-center justify-between text-xs font-mono font-black ${
                       frame.state === 'base-case'
-                        ? 'bg-[#8FD6B0]'
+                        ? 'bg-[#9CCBA2]'
                         : isTop
-                        ? 'bg-[#F5D876]'
+                        ? 'bg-[#DFA43C]'
                         : 'bg-white'
                     }`}
                   >
@@ -104,7 +104,7 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
 
       {/* Memo Table or DP Array */}
       {memoTable && (
-        <div className="flex-1 w-full max-w-md bg-white border-[2.5px] border-[#1A1A1A] rounded-2xl p-4 shadow-[4px_4px_0px_#1A1A1A]">
+        <div className="flex-1 w-full max-w-md bg-white border border-[#E8DCC4] rounded-2xl p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)]">
           <h4 className="font-black text-xs uppercase text-gray-500 mb-3">
             Memoization Cache Table
           </h4>
@@ -112,10 +112,10 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
             {Object.entries(memoTable).map(([k, v]) => (
               <div
                 key={k}
-                className="bg-[#C9B8F5] border-[2px] border-[#1A1A1A] rounded-xl p-2 text-center font-mono shadow-[2px_2px_0px_#1A1A1A]"
+                className="bg-[#8FB5AD] border border-[#E8DCC4] rounded-xl p-2 text-center font-mono shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
               >
                 <span className="text-[10px] text-gray-600 block">fib({k})</span>
-                <span className="font-black text-sm text-[#1A1A1A]">{v}</span>
+                <span className="font-black text-sm text-[#2B2620]">{v}</span>
               </div>
             ))}
           </div>
@@ -123,7 +123,7 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
       )}
 
       {dpArray && (
-        <div className="flex-1 w-full max-w-md bg-white border-[2.5px] border-[#1A1A1A] rounded-2xl p-4 shadow-[4px_4px_0px_#1A1A1A]">
+        <div className="flex-1 w-full max-w-md bg-white border border-[#E8DCC4] rounded-2xl p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)]">
           <h4 className="font-black text-xs uppercase text-gray-500 mb-3">
             Tabulation 1D Array dp[0..n]
           </h4>
@@ -131,10 +131,10 @@ export const RecursionVisualizer: React.FC<RecursionVisualizerProps> = ({
             {dpArray.map((v, i) => (
               <div
                 key={i}
-                className="bg-[#8FD6B0] border-[2px] border-[#1A1A1A] rounded-xl px-3 py-1.5 text-center font-mono shadow-[2px_2px_0px_#1A1A1A]"
+                className="bg-[#9CCBA2] border border-[#E8DCC4] rounded-xl px-3 py-1.5 text-center font-mono shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
               >
                 <span className="text-[10px] text-gray-600 block">[{i}]</span>
-                <span className="font-black text-sm text-[#1A1A1A]">{v}</span>
+                <span className="font-black text-sm text-[#2B2620]">{v}</span>
               </div>
             ))}
           </div>

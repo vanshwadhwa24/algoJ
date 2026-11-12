@@ -17,10 +17,10 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({
     totalSteps > 1 ? (currentStepIndex / (totalSteps - 1)) * 100 : 0;
 
   return (
-    <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[24px] p-4 shadow-[4px_4px_0px_#1A1A1A] space-y-3">
+    <div className="bg-white border border-[#E8DCC4] rounded-[24px] p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] space-y-3">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <span className="bg-[#FAF6EC] border-[2px] border-[#1A1A1A] px-3 py-1 rounded-full text-xs font-black text-[#1A1A1A]">
+          <span className="bg-[#F7EFE1] border border-[#E8DCC4] px-3 py-1 rounded-full text-xs font-black text-[#2B2620]">
             Step {totalSteps > 0 ? currentStepIndex + 1 : 0} of {totalSteps}
           </span>
           <span className="text-xs font-bold text-gray-600">
@@ -29,7 +29,7 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({
         </div>
 
         {/* Operation description */}
-        <p className="text-sm font-semibold text-[#1A1A1A] truncate max-w-[60%] sm:max-w-[70%]">
+        <p className="text-sm font-semibold text-[#2B2620] truncate max-w-[60%] sm:max-w-[70%]">
           {description}
         </p>
       </div>
@@ -43,7 +43,7 @@ export const ExecutionTimeline: React.FC<ExecutionTimelineProps> = ({
           value={currentStepIndex}
           onChange={(e) => onScrub(Number(e.target.value))}
           disabled={totalSteps <= 1}
-          className="w-full h-3 bg-[#FAF6EC] rounded-full appearance-none cursor-pointer border-[2px] border-[#1A1A1A] accent-[#1A1A1A] focus:outline-none"
+          className="w-full h-3 bg-[#F7EFE1] rounded-full appearance-none cursor-pointer border border-[#E8DCC4] accent-[#2B2620] focus:outline-none"
         />
       </div>
     </div>

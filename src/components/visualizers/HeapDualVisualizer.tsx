@@ -50,7 +50,7 @@ export const HeapDualVisualizer: React.FC<HeapDualVisualizerProps> = ({
                 y1={parentCoord.y}
                 x2={childCoord.x}
                 y2={childCoord.y}
-                stroke="#1A1A1A"
+                stroke="#2B2620"
                 strokeWidth="2.5"
                 strokeLinecap="round"
               />
@@ -67,19 +67,19 @@ export const HeapDualVisualizer: React.FC<HeapDualVisualizerProps> = ({
             const isPlaced = el.state === 'placed';
 
             let fill = '#FFFFFF';
-            if (isViolation) fill = '#F5A868'; // Orange
-            else if (isComparing) fill = '#F5D876'; // Yellow
-            else if (isPlaced) fill = '#8FD6B0'; // Mint
-            else if (isActive) fill = '#C9B8F5'; // Lavender
+            if (isViolation) fill = '#D97B54'; // Orange
+            else if (isComparing) fill = '#DFA43C'; // Yellow
+            else if (isPlaced) fill = '#9CCBA2'; // Mint
+            else if (isActive) fill = '#8FB5AD'; // Lavender
 
             return (
               <g key={`tree-node-${i}`} transform={`translate(${coord.x}, ${coord.y})`}>
                 <circle
                   r="20"
                   fill={fill}
-                  stroke="#1A1A1A"
+                  stroke="#2B2620"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[2px_2px_0px_#1A1A1A]"
+                  className="filter drop-shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
                 />
                 <text
                   textAnchor="middle"
@@ -87,7 +87,7 @@ export const HeapDualVisualizer: React.FC<HeapDualVisualizerProps> = ({
                   fontSize="12"
                   fontWeight="900"
                   fontFamily="'JetBrains Mono', monospace"
-                  fill="#1A1A1A"
+                  fill="#2B2620"
                 >
                   {el.value}
                 </text>
@@ -119,20 +119,20 @@ export const HeapDualVisualizer: React.FC<HeapDualVisualizerProps> = ({
             const isPlaced = el.state === 'placed';
 
             let bgColor = 'bg-white';
-            if (isViolation) bgColor = 'bg-[#F5A868]'; // Orange
-            else if (isComparing) bgColor = 'bg-[#F5D876]'; // Yellow
-            else if (isPlaced) bgColor = 'bg-[#8FD6B0]'; // Mint
+            if (isViolation) bgColor = 'bg-[#D97B54]'; // Orange
+            else if (isComparing) bgColor = 'bg-[#DFA43C]'; // Yellow
+            else if (isPlaced) bgColor = 'bg-[#9CCBA2]'; // Mint
 
             return (
               <div key={`arr-slot-${idx}`} className="flex flex-col items-center">
                 <div
-                  className={`w-12 h-14 rounded-2xl border-[2.5px] border-[#1A1A1A] ${bgColor} shadow-[2px_2px_0px_#1A1A1A] flex flex-col justify-between items-center py-1.5 select-none transition-all`}
+                  className={`w-12 h-14 rounded-2xl border border-[#E8DCC4] ${bgColor} shadow-[0_3px_10px_rgba(43,38,32,0.16)] flex flex-col justify-between items-center py-1.5 select-none transition-all`}
                 >
                   <span className="font-mono font-black text-sm">{el.value}</span>
                   <span className="text-[9px] font-bold text-gray-500">[{idx}]</span>
                 </div>
                 {idx === 0 && (
-                  <span className="text-[9px] font-black text-[#1A1A1A] mt-0.5">
+                  <span className="text-[9px] font-black text-[#2B2620] mt-0.5">
                     ROOT
                   </span>
                 )}

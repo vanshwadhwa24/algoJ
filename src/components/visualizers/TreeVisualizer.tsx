@@ -45,13 +45,13 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
     <div className="flex flex-col items-center w-full">
       {/* Traversal Output Pill Stream */}
       {traversalOutput && traversalOutput.length > 0 && (
-        <div className="flex items-center gap-2 mb-2 p-2 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] rounded-2xl text-xs font-bold shadow-[2px_2px_0px_#1A1A1A]">
+        <div className="flex items-center gap-2 mb-2 p-2 bg-[#F7EFE1] border border-[#E8DCC4] rounded-2xl text-xs font-bold shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
           <span className="text-gray-500">Traversal:</span>
           <div className="flex items-center gap-1.5 flex-wrap">
             {traversalOutput.map((val, idx) => (
               <span
                 key={idx}
-                className="bg-[#8FD6B0] border border-[#1A1A1A] px-2 py-0.5 rounded-full font-mono font-black"
+                className="bg-[#9CCBA2] border border-[#2B2620] px-2 py-0.5 rounded-full font-mono font-black"
               >
                 {val}
               </span>
@@ -74,7 +74,7 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
               y1={edge.y1}
               x2={edge.x2}
               y2={edge.y2}
-              stroke="#1A1A1A"
+              stroke="#2B2620"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
@@ -87,9 +87,9 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
             const hl = node.highlight;
 
             let fill = '#FFFFFF';
-            if (hl === 'found' || hl === 'inserted' || hl === 'traversed') fill = '#8FD6B0'; // Mint
-            else if (hl === 'active') fill = '#F5D876'; // Yellow
-            else if (hl === 'imbalanced' || hl === 'deleted') fill = '#F5A868'; // Orange
+            if (hl === 'found' || hl === 'inserted' || hl === 'traversed') fill = '#9CCBA2'; // Mint
+            else if (hl === 'active') fill = '#DFA43C'; // Yellow
+            else if (hl === 'imbalanced' || hl === 'deleted') fill = '#D97B54'; // Orange
 
             const avlNode = node as AVLNode;
             const hasBF = showAVLStats && avlNode.balanceFactor !== undefined;
@@ -100,9 +100,9 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                 <circle
                   r="22"
                   fill={fill}
-                  stroke="#1A1A1A"
+                  stroke="#2B2620"
                   strokeWidth="2.5"
-                  className="filter drop-shadow-[2px_2px_0px_#1A1A1A]"
+                  className="filter drop-shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
                 />
                 {/* Value Text */}
                 <text
@@ -111,7 +111,7 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                   fontSize="13"
                   fontWeight="900"
                   fontFamily="'JetBrains Mono', monospace"
-                  fill="#1A1A1A"
+                  fill="#2B2620"
                 >
                   {node.value}
                 </text>
@@ -125,8 +125,8 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                       width="44"
                       height="15"
                       rx="7"
-                      fill="#C9B8F5"
-                      stroke="#1A1A1A"
+                      fill="#8FB5AD"
+                      stroke="#2B2620"
                       strokeWidth="1.2"
                     />
                     <text
@@ -134,7 +134,7 @@ export const TreeVisualizer: React.FC<TreeVisualizerProps> = ({
                       dy=".35em"
                       fontSize="9"
                       fontWeight="bold"
-                      fill="#1A1A1A"
+                      fill="#2B2620"
                     >
                       BF:{avlNode.balanceFactor}
                     </text>

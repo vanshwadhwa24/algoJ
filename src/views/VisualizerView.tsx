@@ -389,13 +389,13 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
   return (
     <div className="space-y-6 max-w-7xl mx-auto px-4 md:px-8 py-4">
       {/* Top Workspace Header Bar */}
-      <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[28px] p-5 shadow-[4px_4px_0px_#1A1A1A] flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white border border-[#E8DCC4] rounded-[28px] p-5 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] flex flex-wrap items-center justify-between gap-4">
         {/* Selector & Title */}
         <div className="flex items-center gap-3">
           <select
             value={algorithm.id}
             onChange={(e) => onSelectAlgorithm(e.target.value)}
-            className="font-black text-base sm:text-lg bg-[#FAF6EC] border-[2px] border-[#1A1A1A] rounded-2xl px-4 py-2 text-[#1A1A1A] focus:outline-none shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+            className="font-black text-base sm:text-lg bg-[#F7EFE1] border border-[#E8DCC4] rounded-2xl px-4 py-2 text-[#2B2620] focus:outline-none shadow-[0_3px_10px_rgba(43,38,32,0.16)] cursor-pointer"
           >
             {ALGORITHMS_CATALOG.map((a) => (
               <option key={a.id} value={a.id}>
@@ -404,17 +404,17 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
             ))}
           </select>
 
-          <span className="hidden sm:inline-block bg-[#8FD6B0] border border-[#1A1A1A] px-3 py-1 rounded-full text-xs font-black uppercase text-[#1A1A1A]">
+          <span className="hidden sm:inline-block bg-[#9CCBA2] border border-[#2B2620] px-3 py-1 rounded-full text-xs font-black uppercase text-[#2B2620]">
             {algorithm.difficulty}
           </span>
 
           {backendStatus === 'connected' ? (
-            <span className="inline-flex items-center gap-1.5 bg-[#8FD6B0] border-[1.5px] border-[#1A1A1A] px-3 py-1 rounded-full text-xs font-bold text-[#1A1A1A] shadow-[1px_1px_0px_#1A1A1A]">
+            <span className="inline-flex items-center gap-1.5 bg-[#9CCBA2] border-[1.5px] border-[#2B2620] px-3 py-1 rounded-full text-xs font-bold text-[#2B2620] shadow-[0_2px_6px_rgba(43,38,32,0.18)]">
               <span className="w-2 h-2 rounded-full bg-[#107C41] animate-pulse"></span>
               <span>Java Backend ({backendInfo})</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 bg-[#FFDE85] border-[1.5px] border-[#1A1A1A] px-3 py-1 rounded-full text-xs font-bold text-[#1A1A1A] shadow-[1px_1px_0px_#1A1A1A]">
+            <span className="inline-flex items-center gap-1.5 bg-[#FFDE85] border-[1.5px] border-[#2B2620] px-3 py-1 rounded-full text-xs font-bold text-[#2B2620] shadow-[0_2px_6px_rgba(43,38,32,0.18)]">
               <span className="w-2 h-2 rounded-full bg-[#E65100]"></span>
               <span>Local Fallback (Offline)</span>
             </span>
@@ -422,13 +422,13 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
         </div>
 
         {/* View Switcher Pills */}
-        <div className="flex items-center gap-1.5 bg-[#FAF6EC] p-1 rounded-full border-[2px] border-[#1A1A1A]">
+        <div className="flex items-center gap-1.5 bg-[#F7EFE1] p-1 rounded-full border border-[#E8DCC4]">
           <button
             onClick={() => setActiveTab('visual')}
             className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
               activeTab === 'visual'
-                ? 'bg-[#1A1A1A] text-white shadow-[2px_2px_0px_#8FD6B0]'
-                : 'text-[#1A1A1A] hover:bg-white'
+                ? 'bg-[#2B2620] text-white shadow-[0_3px_10px_rgba(43,38,32,0.16)]'
+                : 'text-[#2B2620] hover:bg-white'
             }`}
           >
             <Code2 className="w-3.5 h-3.5" />
@@ -439,8 +439,8 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
             onClick={() => setActiveTab('learn')}
             className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
               activeTab === 'learn'
-                ? 'bg-[#1A1A1A] text-white shadow-[2px_2px_0px_#8FD6B0]'
-                : 'text-[#1A1A1A] hover:bg-white'
+                ? 'bg-[#2B2620] text-white shadow-[0_3px_10px_rgba(43,38,32,0.16)]'
+                : 'text-[#2B2620] hover:bg-white'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -451,8 +451,8 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
             onClick={() => setActiveTab('practice')}
             className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
               activeTab === 'practice'
-                ? 'bg-[#1A1A1A] text-white shadow-[2px_2px_0px_#8FD6B0]'
-                : 'text-[#1A1A1A] hover:bg-white'
+                ? 'bg-[#2B2620] text-white shadow-[0_3px_10px_rgba(43,38,32,0.16)]'
+                : 'text-[#2B2620] hover:bg-white'
             }`}
           >
             <HelpCircle className="w-3.5 h-3.5" />
@@ -465,7 +465,7 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
       {activeTab === 'visual' && (
         <div className="space-y-6">
           {/* Custom Input Controls Strip */}
-          <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[24px] p-4 shadow-[4px_4px_0px_#1A1A1A] flex flex-wrap items-center gap-3">
+          <div className="bg-white border border-[#E8DCC4] rounded-[24px] p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] flex flex-wrap items-center gap-3">
             <span className="text-xs font-black uppercase text-gray-500 flex items-center gap-1">
               <Sliders className="w-3.5 h-3.5" /> Input Controls:
             </span>
@@ -478,7 +478,7 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   value={arrayInputStr}
                   onChange={(e) => setArrayInputStr(e.target.value)}
                   placeholder="e.g. 10, 20, 5, 40"
-                  className="bg-[#FAF6EC] border-[2px] border-[#1A1A1A] rounded-xl px-3 py-1 text-xs font-mono font-bold text-[#1A1A1A] min-w-[220px]"
+                  className="bg-[#F7EFE1] border border-[#E8DCC4] rounded-xl px-3 py-1 text-xs font-mono font-bold text-[#2B2620] min-w-[220px]"
                 />
 
                 {algorithm.category === 'searching' && (
@@ -488,7 +488,7 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                       type="number"
                       value={targetSearchVal}
                       onChange={(e) => setTargetSearchVal(Number(e.target.value))}
-                      className="w-16 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] rounded-xl px-2 py-1 text-xs font-mono font-bold text-[#1A1A1A]"
+                      className="w-16 bg-[#F7EFE1] border border-[#E8DCC4] rounded-xl px-2 py-1 text-xs font-mono font-bold text-[#2B2620]"
                     />
                   </div>
                 )}
@@ -501,7 +501,7 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                       setTargetSearchVal(rnd[Math.floor(Math.random() * rnd.length)]);
                     }
                   }}
-                  className="px-3 py-1 bg-[#C9B8F5] text-[#1A1A1A] text-xs font-black rounded-xl border-[2px] border-[#1A1A1A] shadow-[2px_2px_0px_#1A1A1A] cursor-pointer"
+                  className="px-3 py-1 bg-[#8FB5AD] text-[#2B2620] text-xs font-black rounded-xl border border-[#E8DCC4] shadow-[0_3px_10px_rgba(43,38,32,0.16)] cursor-pointer"
                 >
                   Randomize
                 </button>
@@ -516,20 +516,20 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Index"
                   value={dsInputIndex}
                   onChange={(e) => setDsInputIndex(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
                 <input
                   type="number"
                   placeholder="Value"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleArrayAction('access')} className="btn-neo-pill px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Access</button>
-                <button onClick={() => handleArrayAction('update')} className="btn-neo-pill px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Update</button>
-                <button onClick={() => handleArrayAction('insert')} className="btn-neo-pill px-2.5 py-1 bg-[#C9B8F5] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
-                <button onClick={() => handleArrayAction('delete')} className="btn-neo-pill px-2.5 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
-                <button onClick={() => handleArrayAction('traverse')} className="btn-neo-pill px-2.5 py-1 bg-white border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Traverse</button>
+                <button onClick={() => handleArrayAction('access')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Access</button>
+                <button onClick={() => handleArrayAction('update')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Update</button>
+                <button onClick={() => handleArrayAction('insert')} className="px-2.5 py-1 bg-[#8FB5AD] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
+                <button onClick={() => handleArrayAction('delete')} className="px-2.5 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
+                <button onClick={() => handleArrayAction('traverse')} className="px-2.5 py-1 bg-white border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Traverse</button>
               </div>
             )}
 
@@ -541,19 +541,19 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Value"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleLinkedListAction('insertHead')} className="px-2 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">+ Head</button>
-                <button onClick={() => handleLinkedListAction('insertTail')} className="px-2 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">+ Tail</button>
-                <button onClick={() => handleLinkedListAction('deleteHead')} className="px-2 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">- Head</button>
-                <button onClick={() => handleLinkedListAction('deleteTail')} className="px-2 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">- Tail</button>
-                <button onClick={() => handleLinkedListAction('reverse')} className="px-2 py-1 bg-[#C9B8F5] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Reverse</button>
+                <button onClick={() => handleLinkedListAction('insertHead')} className="px-2 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">+ Head</button>
+                <button onClick={() => handleLinkedListAction('insertTail')} className="px-2 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">+ Tail</button>
+                <button onClick={() => handleLinkedListAction('deleteHead')} className="px-2 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">- Head</button>
+                <button onClick={() => handleLinkedListAction('deleteTail')} className="px-2 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">- Tail</button>
+                <button onClick={() => handleLinkedListAction('reverse')} className="px-2 py-1 bg-[#8FB5AD] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Reverse</button>
                 <button
                   onClick={() => {
                     setLinkedListDS(createInitialLinkedList([10, 20, 30, 40], !linkedListDS.isDoubly));
                     setActionCounter((c) => c + 1);
                   }}
-                  className="px-2.5 py-1 bg-[#1A1A1A] text-white rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#2B2620] text-white rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Mode: {linkedListDS.isDoubly ? 'Doubly' : 'Singly'}
                 </button>
@@ -568,12 +568,12 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Value"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleStackAction('push')} className="px-3 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Push</button>
-                <button onClick={() => handleStackAction('pop')} className="px-3 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Pop</button>
-                <button onClick={() => handleStackAction('peek')} className="px-3 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Peek</button>
-                <button onClick={() => handleStackAction('isEmpty')} className="px-3 py-1 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">isEmpty</button>
+                <button onClick={() => handleStackAction('push')} className="px-3 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Push</button>
+                <button onClick={() => handleStackAction('pop')} className="px-3 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Pop</button>
+                <button onClick={() => handleStackAction('peek')} className="px-3 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Peek</button>
+                <button onClick={() => handleStackAction('isEmpty')} className="px-3 py-1 bg-[#F7EFE1] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">isEmpty</button>
               </div>
             )}
 
@@ -585,17 +585,17 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Value"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleQueueAction('enqueue')} className="px-3 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Enqueue</button>
-                <button onClick={() => handleQueueAction('dequeue')} className="px-3 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Dequeue</button>
-                <button onClick={() => handleQueueAction('peekFront')} className="px-3 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Peek Front</button>
+                <button onClick={() => handleQueueAction('enqueue')} className="px-3 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Enqueue</button>
+                <button onClick={() => handleQueueAction('dequeue')} className="px-3 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Dequeue</button>
+                <button onClick={() => handleQueueAction('peekFront')} className="px-3 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Peek Front</button>
                 <button
                   onClick={() => {
                     setQueueDS(createInitialQueue([15, 30, 45], 6, !queueDS.isCircular));
                     setActionCounter((c) => c + 1);
                   }}
-                  className="px-2.5 py-1 bg-[#1A1A1A] text-white rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#2B2620] text-white rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Type: {queueDS.isCircular ? 'Circular' : 'Standard'}
                 </button>
@@ -610,24 +610,24 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Key"
                   value={hashKey}
                   onChange={(e) => setHashKey(e.target.value)}
-                  className="w-20 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-20 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
                 <input
                   type="text"
                   placeholder="Val"
                   value={hashVal}
                   onChange={(e) => setHashVal(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleHashTableAction('insert')} className="px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
-                <button onClick={() => handleHashTableAction('search')} className="px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Search</button>
-                <button onClick={() => handleHashTableAction('delete')} className="px-2.5 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
+                <button onClick={() => handleHashTableAction('insert')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
+                <button onClick={() => handleHashTableAction('search')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Search</button>
+                <button onClick={() => handleHashTableAction('delete')} className="px-2.5 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
                 <button
                   onClick={() => {
                     setHashTableDS(createInitialHashTable(hashTableDS.collisionStrategy === 'chaining' ? 'probing' : 'chaining', 7));
                     setActionCounter((c) => c + 1);
                   }}
-                  className="px-2.5 py-1 bg-[#1A1A1A] text-white rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#2B2620] text-white rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Strategy: {hashTableDS.collisionStrategy === 'chaining' ? 'Chaining' : 'Probing'}
                 </button>
@@ -642,13 +642,13 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Value"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleBSTAction('insert')} className="px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
-                <button onClick={() => handleBSTAction('delete')} className="px-2.5 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
-                <button onClick={() => handleBSTAction('search')} className="px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Search</button>
-                <button onClick={() => handleBSTAction('inorder')} className="px-2.5 py-1 bg-[#C9B8F5] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Inorder</button>
-                <button onClick={() => handleBSTAction('levelorder')} className="px-2.5 py-1 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Level Order</button>
+                <button onClick={() => handleBSTAction('insert')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
+                <button onClick={() => handleBSTAction('delete')} className="px-2.5 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
+                <button onClick={() => handleBSTAction('search')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Search</button>
+                <button onClick={() => handleBSTAction('inorder')} className="px-2.5 py-1 bg-[#8FB5AD] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Inorder</button>
+                <button onClick={() => handleBSTAction('levelorder')} className="px-2.5 py-1 bg-[#F7EFE1] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Level Order</button>
               </div>
             )}
 
@@ -660,17 +660,17 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Val"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleHeapAction('insert')} className="px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
-                <button onClick={() => handleHeapAction('extract')} className="px-2.5 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Extract Root</button>
-                <button onClick={() => handleHeapAction('peek')} className="px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Peek</button>
+                <button onClick={() => handleHeapAction('insert')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
+                <button onClick={() => handleHeapAction('extract')} className="px-2.5 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Extract Root</button>
+                <button onClick={() => handleHeapAction('peek')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Peek</button>
                 <button
                   onClick={() => {
                     setHeapDS(createInitialHeap(heapDS.type === 'max' ? 'min' : 'max'));
                     setActionCounter((c) => c + 1);
                   }}
-                  className="px-2.5 py-1 bg-[#1A1A1A] text-white rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#2B2620] text-white rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Type: {heapDS.type === 'max' ? 'Max Heap' : 'Min Heap'}
                 </button>
@@ -685,10 +685,10 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Val"
                   value={dsInputValue}
                   onChange={(e) => setDsInputValue(e.target.value)}
-                  className="w-16 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-16 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleAVLAction('insert')} className="px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
-                <button onClick={() => handleAVLAction('search')} className="px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Search</button>
+                <button onClick={() => handleAVLAction('insert')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert</button>
+                <button onClick={() => handleAVLAction('search')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Search</button>
               </div>
             )}
 
@@ -700,12 +700,12 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   placeholder="Word/Prefix"
                   value={hashKey}
                   onChange={(e) => setHashKey(e.target.value)}
-                  className="w-28 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-1 text-xs font-mono font-bold"
+                  className="w-28 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-1 text-xs font-mono font-bold"
                 />
-                <button onClick={() => handleTrieAction('insert')} className="px-2.5 py-1 bg-[#8FD6B0] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Insert Word</button>
-                <button onClick={() => handleTrieAction('searchWord')} className="px-2.5 py-1 bg-[#F5D876] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Search Word</button>
-                <button onClick={() => handleTrieAction('autocomplete')} className="px-2.5 py-1 bg-[#C9B8F5] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Autocomplete</button>
-                <button onClick={() => handleTrieAction('delete')} className="px-2.5 py-1 bg-[#F5A868] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
+                <button onClick={() => handleTrieAction('insert')} className="px-2.5 py-1 bg-[#9CCBA2] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Insert Word</button>
+                <button onClick={() => handleTrieAction('searchWord')} className="px-2.5 py-1 bg-[#DFA43C] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Search Word</button>
+                <button onClick={() => handleTrieAction('autocomplete')} className="px-2.5 py-1 bg-[#8FB5AD] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Autocomplete</button>
+                <button onClick={() => handleTrieAction('delete')} className="px-2.5 py-1 bg-[#D97B54] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer">Delete</button>
               </div>
             )}
 
@@ -714,19 +714,19 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
               <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => setGraphData(getSampleGraph())}
-                  className="px-2.5 py-1 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#F7EFE1] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Standard Graph
                 </button>
                 <button
                   onClick={() => setGraphData(getDisconnectedSampleGraph())}
-                  className="px-2.5 py-1 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#F7EFE1] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Disconnected Graph
                 </button>
                 <button
                   onClick={() => setGraphData(getNegativeWeightsSampleGraph())}
-                  className="px-2.5 py-1 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg text-xs font-bold cursor-pointer"
+                  className="px-2.5 py-1 bg-[#F7EFE1] border border-[#2B2620] rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Negative Weights Graph
                 </button>
@@ -768,7 +768,7 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                       key={m}
                       onClick={() => setFibMode(m)}
                       className={`px-2 py-0.5 rounded-md border text-[11px] font-bold ${
-                        fibMode === m ? 'bg-[#1A1A1A] text-white' : 'bg-white text-gray-700'
+                        fibMode === m ? 'bg-[#2B2620] text-white' : 'bg-white text-gray-700'
                       }`}
                     >
                       {m}
@@ -812,20 +812,20 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                   type="text"
                   value={lcsS1}
                   onChange={(e) => setLcsS1(e.target.value)}
-                  className="w-20 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-0.5 text-xs font-mono font-bold"
+                  className="w-20 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-0.5 text-xs font-mono font-bold"
                 />
                 <input
                   type="text"
                   value={lcsS2}
                   onChange={(e) => setLcsS2(e.target.value)}
-                  className="w-20 bg-[#FAF6EC] border border-[#1A1A1A] rounded-lg px-2 py-0.5 text-xs font-mono font-bold"
+                  className="w-20 bg-[#F7EFE1] border border-[#2B2620] rounded-lg px-2 py-0.5 text-xs font-mono font-bold"
                 />
               </div>
             )}
           </div>
 
           {/* Visualization Canvas Box */}
-          <div className="bg-white border-[2.5px] border-[#1A1A1A] rounded-[28px] p-6 shadow-[6px_6px_0px_#1A1A1A] flex flex-col justify-between min-h-[380px]">
+          <div className="bg-white border border-[#E8DCC4] rounded-[28px] p-6 shadow-[0_12px_28px_-8px_rgba(43,38,32,0.25)] flex flex-col justify-between min-h-[380px]">
             {/* Top Canvas Header Bar: Operation Counter */}
             <div className="flex items-center justify-between pb-3 border-b-2 border-gray-100 mb-4">
               <span className="text-xs font-black uppercase text-gray-500 tracking-wider">
@@ -869,11 +869,11 @@ export const VisualizerView: React.FC<VisualizerViewProps> = ({
                         {(vizState.cells || []).map((cell: any) => (
                           <div
                             key={cell.index}
-                            className={`w-14 h-16 rounded-2xl border-[2.5px] border-[#1A1A1A] flex flex-col items-center justify-between py-2 shadow-[2px_2px_0px_#1A1A1A] ${
+                            className={`w-14 h-16 rounded-2xl border border-[#E8DCC4] flex flex-col items-center justify-between py-2 shadow-[0_3px_10px_rgba(43,38,32,0.16)] ${
                               cell.state === 'active' || cell.state === 'inserted'
-                                ? 'bg-[#8FD6B0]'
+                                ? 'bg-[#9CCBA2]'
                                 : cell.state === 'deleted'
-                                ? 'bg-[#F5A868] line-through'
+                                ? 'bg-[#D97B54] line-through'
                                 : 'bg-white'
                             }`}
                           >

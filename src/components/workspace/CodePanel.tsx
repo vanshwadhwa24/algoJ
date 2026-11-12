@@ -9,10 +9,10 @@ interface CodePanelProps {
 
 export const CodePanel: React.FC<CodePanelProps> = ({ code, activeLine }) => {
   return (
-    <div className="bg-[#1A1A1A] text-white border-[2.5px] border-[#1A1A1A] rounded-[24px] p-4 shadow-[4px_4px_0px_#1A1A1A] overflow-hidden flex flex-col h-full">
+    <div className="bg-[#2B2620] text-white border border-[#E8DCC4] rounded-[24px] p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] overflow-hidden flex flex-col h-full">
       <div className="flex items-center justify-between pb-3 border-b border-gray-700 mb-3">
         <div className="flex items-center gap-2">
-          <Code2 className="w-4 h-4 text-[#8FD6B0]" />
+          <Code2 className="w-4 h-4 text-[#9CCBA2]" />
           <span className="font-bold text-sm tracking-wide text-gray-200">
             Pseudocode / Implementation
           </span>
@@ -32,13 +32,13 @@ export const CodePanel: React.FC<CodePanelProps> = ({ code, activeLine }) => {
               key={idx}
               className={`flex items-start gap-3 px-2 py-1 rounded-md transition-colors ${
                 isActive
-                  ? 'bg-[#8FD6B0] text-[#1A1A1A] font-bold border-[1.5px] border-[#1A1A1A]'
+                  ? 'bg-[#9CCBA2] text-[#2B2620] font-bold border-[1.5px] border-[#2B2620]'
                   : 'text-gray-300 hover:bg-[#252525]'
               }`}
             >
               <span
                 className={`select-none text-[11px] w-6 text-right shrink-0 ${
-                  isActive ? 'text-[#1A1A1A]' : 'text-gray-500'
+                  isActive ? 'text-[#2B2620]' : 'text-gray-500'
                 }`}
               >
                 {lineNum}

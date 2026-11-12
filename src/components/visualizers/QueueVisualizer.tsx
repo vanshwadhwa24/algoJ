@@ -29,22 +29,22 @@ export const QueueVisualizer: React.FC<QueueVisualizerProps> = ({
           const isEmpty = slot.value === null;
 
           let bgColor = 'bg-white';
-          if (slot.state === 'enqueueing') bgColor = 'bg-[#8FD6B0]'; // Mint
-          else if (slot.state === 'dequeueing') bgColor = 'bg-[#F5A868]'; // Orange
-          else if (isFront) bgColor = 'bg-[#F5D876]'; // Yellow
-          else if (isRear) bgColor = 'bg-[#C9B8F5]'; // Lavender
+          if (slot.state === 'enqueueing') bgColor = 'bg-[#9CCBA2]'; // Mint
+          else if (slot.state === 'dequeueing') bgColor = 'bg-[#D97B54]'; // Orange
+          else if (isFront) bgColor = 'bg-[#DFA43C]'; // Yellow
+          else if (isRear) bgColor = 'bg-[#8FB5AD]'; // Lavender
 
           return (
             <div key={slot.index} className="flex flex-col items-center">
               {/* Pointer tags above */}
               <div className="h-6 flex items-center gap-1 mb-1">
                 {isFront && (
-                  <span className="bg-[#1A1A1A] text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-[#1A1A1A]">
+                  <span className="bg-[#2B2620] text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-[#2B2620]">
                     FRONT
                   </span>
                 )}
                 {isRear && (
-                  <span className="bg-[#F5A868] text-[#1A1A1A] text-[10px] font-black px-2 py-0.5 rounded-full border border-[#1A1A1A]">
+                  <span className="bg-[#D97B54] text-[#2B2620] text-[10px] font-black px-2 py-0.5 rounded-full border border-[#2B2620]">
                     REAR
                   </span>
                 )}
@@ -52,11 +52,11 @@ export const QueueVisualizer: React.FC<QueueVisualizerProps> = ({
 
               {/* Slot Box */}
               <div
-                className={`w-14 h-16 sm:w-16 sm:h-20 rounded-2xl border-[2.5px] border-[#1A1A1A] ${
-                  isEmpty ? 'bg-[#FAF6EC] border-dashed border-gray-400' : bgColor
-                } shadow-[3px_3px_0px_#1A1A1A] flex flex-col justify-between items-center py-2 select-none transition-all`}
+                className={`w-14 h-16 sm:w-16 sm:h-20 rounded-2xl border border-[#E8DCC4] ${
+                  isEmpty ? 'bg-[#F7EFE1] border-dashed border-gray-400' : bgColor
+                } shadow-[0_4px_12px_rgba(43,38,32,0.18)] flex flex-col justify-between items-center py-2 select-none transition-all`}
               >
-                <span className="font-mono font-black text-sm sm:text-base text-[#1A1A1A]">
+                <span className="font-mono font-black text-sm sm:text-base text-[#2B2620]">
                   {isEmpty ? '-' : slot.value}
                 </span>
                 <span className="text-[10px] font-bold text-gray-500">
@@ -73,8 +73,8 @@ export const QueueVisualizer: React.FC<QueueVisualizerProps> = ({
       </div>
 
       {/* Mode and Status Pill */}
-      <div className="flex flex-wrap items-center justify-center gap-3 bg-white border-[2px] border-[#1A1A1A] px-4 py-2 rounded-2xl shadow-[2px_2px_0px_#1A1A1A] text-xs font-bold">
-        <span>Mode: <strong className="text-[#1A1A1A]">{isCircular ? 'Circular Queue' : 'Standard Queue'}</strong></span>
+      <div className="flex flex-wrap items-center justify-center gap-3 bg-white border border-[#E8DCC4] px-4 py-2 rounded-2xl shadow-[0_3px_10px_rgba(43,38,32,0.16)] text-xs font-bold">
+        <span>Mode: <strong className="text-[#2B2620]">{isCircular ? 'Circular Queue' : 'Standard Queue'}</strong></span>
         <span>•</span>
         <span>Size: <strong>{size} / {capacity}</strong></span>
         <span>•</span>

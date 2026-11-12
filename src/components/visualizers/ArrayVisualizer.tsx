@@ -51,28 +51,28 @@ export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
           const barHeight = Math.max(28, Math.round(((val - minVal) / range) * 160 + 28));
 
           // Determine color & status
-          let bgColor = 'bg-white';
-          let borderColor = 'border-[#1A1A1A]';
-          let textColor = 'text-[#1A1A1A]';
+          let bgColor = 'bg-[#FBF3E3]';
+          let borderColor = 'border-[#E3D3B4]';
+          let textColor = 'text-[#2B2620]';
           let labelBadge: string | null = null;
 
           if (idx === foundIndex || el.state === 'found') {
-            bgColor = 'bg-[#8FD6B0]'; // Mint green
+            bgColor = 'bg-[#9CCBA2]'; // Mint green
             labelBadge = 'FOUND';
           } else if (idx === pivotIndex || el.state === 'pivot') {
-            bgColor = 'bg-[#C9B8F5]'; // Lavender
+            bgColor = 'bg-[#8FB5AD]'; // Lavender
             labelBadge = 'PIVOT';
           } else if (idx === midIndex || el.state === 'mid') {
-            bgColor = 'bg-[#F5A868]'; // Orange
+            bgColor = 'bg-[#D97B54]'; // Orange
             labelBadge = 'MID';
           } else if (swappingIndices.includes(idx) || el.state === 'swapping') {
-            bgColor = 'bg-[#F5A868]'; // Orange
+            bgColor = 'bg-[#D97B54]'; // Orange
             labelBadge = 'SWAP';
           } else if (comparingIndices.includes(idx) || el.state === 'comparing' || idx === currentIndex) {
-            bgColor = 'bg-[#F5D876]'; // Yellow
+            bgColor = 'bg-[#DFA43C]'; // Yellow
             labelBadge = 'COMPARE';
           } else if (sortedIndices.includes(idx) || el.state === 'sorted') {
-            bgColor = 'bg-[#8FD6B0]'; // Mint
+            bgColor = 'bg-[#9CCBA2]'; // Mint
           } else if (el.state === 'eliminated') {
             bgColor = 'bg-gray-200 opacity-40';
           }
@@ -87,7 +87,7 @@ export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
               {/* Optional role badge above bar */}
               <div className="h-5 flex items-center justify-center text-[10px] font-black tracking-wider uppercase mb-1">
                 {labelBadge && (
-                  <span className="bg-[#1A1A1A] text-white px-1.5 py-0.5 rounded text-[9px]">
+                  <span className="bg-[#2B2620] text-white px-1.5 py-0.5 rounded text-[9px]">
                     {labelBadge}
                   </span>
                 )}
@@ -96,7 +96,7 @@ export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
               {/* The Visual Bar */}
               <div
                 style={{ height: `${barHeight}px` }}
-                className={`w-full rounded-2xl border-[2.5px] ${borderColor} ${bgColor} ${textColor} shadow-[3px_3px_0px_#1A1A1A] flex flex-col justify-between items-center py-2 transition-all duration-200 select-none`}
+                className={`w-full rounded-2xl border-2 ${borderColor} ${bgColor} ${textColor} shadow-[0_4px_12px_rgba(43,38,32,0.18)] flex flex-col justify-between items-center py-2 transition-all duration-200 select-none`}
               >
                 <span className="font-mono font-black text-xs sm:text-sm">
                   {val}
@@ -111,7 +111,7 @@ export const ArrayVisualizer: React.FC<ArrayVisualizerProps> = ({
                 {pointers.map((p) => (
                   <span
                     key={p}
-                    className="text-[9px] font-black px-1 rounded bg-[#F5D876] border border-[#1A1A1A]"
+                    className="text-[9px] font-black px-1 rounded bg-[#DFA43C] border border-[#2B2620]"
                   >
                     {p}
                   </span>

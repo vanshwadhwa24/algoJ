@@ -28,11 +28,11 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
   return (
     <div className="flex flex-col items-center w-full space-y-4">
       {/* Top Mode Selector Tabs */}
-      <div className="flex items-center gap-2 bg-[#FAF6EC] p-1 rounded-full border-[2px] border-[#1A1A1A]">
+      <div className="flex items-center gap-2 bg-[#F7EFE1] p-1 rounded-full border border-[#E8DCC4]">
         <button
           onClick={() => setViewMode('canvas')}
           className={`px-3 py-1 rounded-full text-xs font-black cursor-pointer transition-all ${
-            viewMode === 'canvas' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A] hover:bg-white'
+            viewMode === 'canvas' ? 'bg-[#2B2620] text-white' : 'text-[#2B2620] hover:bg-white'
           }`}
         >
           Visual Graph
@@ -40,7 +40,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
         <button
           onClick={() => setViewMode('adjList')}
           className={`px-3 py-1 rounded-full text-xs font-black cursor-pointer transition-all ${
-            viewMode === 'adjList' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A] hover:bg-white'
+            viewMode === 'adjList' ? 'bg-[#2B2620] text-white' : 'text-[#2B2620] hover:bg-white'
           }`}
         >
           Adjacency List
@@ -48,7 +48,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
         <button
           onClick={() => setViewMode('adjMatrix')}
           className={`px-3 py-1 rounded-full text-xs font-black cursor-pointer transition-all ${
-            viewMode === 'adjMatrix' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A] hover:bg-white'
+            viewMode === 'adjMatrix' ? 'bg-[#2B2620] text-white' : 'text-[#2B2620] hover:bg-white'
           }`}
         >
           Adjacency Matrix
@@ -69,7 +69,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                 markerHeight="6"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#1A1A1A" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#2B2620" />
               </marker>
               <marker
                 id="arrow-mst"
@@ -80,7 +80,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                 markerHeight="6"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#8FD6B0" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#9CCBA2" />
               </marker>
             </defs>
 
@@ -95,7 +95,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
               const isRejected = e.state === 'rejected';
               const isActive = e.state === 'active';
 
-              let strokeColor = '#1A1A1A';
+              let strokeColor = '#2B2620';
               let strokeWidth = '2.5';
               let strokeDash: string | undefined = undefined;
 
@@ -103,10 +103,10 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                 strokeColor = '#10b981'; // vibrant green
                 strokeWidth = '4.5';
               } else if (isTraversed) {
-                strokeColor = '#F5A868'; // Orange
+                strokeColor = '#D97B54'; // Orange
                 strokeWidth = '3.5';
               } else if (isActive) {
-                strokeColor = '#F5D876'; // Yellow
+                strokeColor = '#DFA43C'; // Yellow
                 strokeWidth = '4';
               } else if (isRejected) {
                 strokeColor = '#dc2626'; // Red
@@ -140,7 +140,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                         height="20"
                         rx="10"
                         fill="#FFFFFF"
-                        stroke="#1A1A1A"
+                        stroke="#2B2620"
                         strokeWidth="1.5"
                       />
                       <text
@@ -149,7 +149,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                         fontSize="10"
                         fontWeight="900"
                         fontFamily="'JetBrains Mono', monospace"
-                        fill="#1A1A1A"
+                        fill="#2B2620"
                       >
                         {e.weight}
                       </text>
@@ -163,9 +163,9 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
             {graph.vertices.map((v) => {
               const hl = v.state;
               let fill = '#FFFFFF';
-              if (hl === 'visited') fill = '#8FD6B0'; // Mint
-              else if (hl === 'current') fill = '#F5D876'; // Yellow
-              else if (hl === 'queued' || hl === 'active') fill = '#C9B8F5'; // Lavender
+              if (hl === 'visited') fill = '#9CCBA2'; // Mint
+              else if (hl === 'current') fill = '#DFA43C'; // Yellow
+              else if (hl === 'queued' || hl === 'active') fill = '#8FB5AD'; // Lavender
 
               const dist = distances?.[v.id];
 
@@ -179,9 +179,9 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                   <circle
                     r="22"
                     fill={fill}
-                    stroke="#1A1A1A"
+                    stroke="#2B2620"
                     strokeWidth="2.5"
-                    className="filter drop-shadow-[2px_2px_0px_#1A1A1A]"
+                    className="filter drop-shadow-[0_3px_10px_rgba(43,38,32,0.16)]"
                   />
                   <text
                     textAnchor="middle"
@@ -189,7 +189,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                     fontSize="13"
                     fontWeight="900"
                     fontFamily="'JetBrains Mono', monospace"
-                    fill="#1A1A1A"
+                    fill="#2B2620"
                   >
                     {v.label}
                   </text>
@@ -203,8 +203,8 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                         width="40"
                         height="16"
                         rx="8"
-                        fill="#FAF6EC"
-                        stroke="#1A1A1A"
+                        fill="#F7EFE1"
+                        stroke="#2B2620"
                         strokeWidth="1.2"
                       />
                       <text
@@ -212,7 +212,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                         dy=".35em"
                         fontSize="9"
                         fontWeight="black"
-                        fill="#1A1A1A"
+                        fill="#2B2620"
                       >
                         d:{dist === Infinity ? '∞' : dist}
                       </text>
@@ -227,11 +227,11 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
 
       {/* Adjacency List View */}
       {viewMode === 'adjList' && (
-        <div className="w-full max-w-xl bg-white border-[2.5px] border-[#1A1A1A] rounded-2xl p-4 shadow-[4px_4px_0px_#1A1A1A] space-y-2">
+        <div className="w-full max-w-xl bg-white border border-[#E8DCC4] rounded-2xl p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] space-y-2">
           <h4 className="font-black text-sm uppercase text-gray-500 mb-2">Adjacency List</h4>
           {Object.entries(adjList).map(([source, neighbors]) => (
             <div key={source} className="flex items-center gap-2 text-xs font-mono">
-              <span className="w-8 h-8 rounded-full bg-[#FAF6EC] border-[2px] border-[#1A1A1A] flex items-center justify-center font-black">
+              <span className="w-8 h-8 rounded-full bg-[#F7EFE1] border border-[#E8DCC4] flex items-center justify-center font-black">
                 {source}
               </span>
               <span className="text-gray-400">→</span>
@@ -242,7 +242,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
                   neighbors.map((n, i) => (
                     <span
                       key={i}
-                      className="bg-white border-[1.5px] border-[#1A1A1A] px-2 py-1 rounded-xl shadow-[1px_1px_0px_#1A1A1A] font-bold"
+                      className="bg-white border-[1.5px] border-[#2B2620] px-2 py-1 rounded-xl shadow-[0_2px_6px_rgba(43,38,32,0.18)] font-bold"
                     >
                       {n.target} (w={n.weight})
                     </span>
@@ -256,14 +256,14 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
 
       {/* Adjacency Matrix View */}
       {viewMode === 'adjMatrix' && (
-        <div className="w-full max-w-xl bg-white border-[2.5px] border-[#1A1A1A] rounded-2xl p-4 shadow-[4px_4px_0px_#1A1A1A] overflow-x-auto">
+        <div className="w-full max-w-xl bg-white border border-[#E8DCC4] rounded-2xl p-4 shadow-[0_8px_20px_-6px_rgba(43,38,32,0.22)] overflow-x-auto">
           <h4 className="font-black text-sm uppercase text-gray-500 mb-2">Adjacency Matrix</h4>
           <table className="w-full border-collapse font-mono text-xs">
             <thead>
               <tr>
-                <th className="p-2 border border-gray-300 bg-[#FAF6EC]"></th>
+                <th className="p-2 border border-gray-300 bg-[#F7EFE1]"></th>
                 {labels.map((l) => (
-                  <th key={l} className="p-2 border border-gray-300 bg-[#FAF6EC] font-black">
+                  <th key={l} className="p-2 border border-gray-300 bg-[#F7EFE1] font-black">
                     {l}
                   </th>
                 ))}
@@ -272,7 +272,7 @@ export const GraphVisualizer: React.FC<GraphVisualizerProps> = ({
             <tbody>
               {labels.map((rowLabel, rIdx) => (
                 <tr key={rowLabel}>
-                  <td className="p-2 border border-gray-300 bg-[#FAF6EC] font-black text-center">
+                  <td className="p-2 border border-gray-300 bg-[#F7EFE1] font-black text-center">
                     {rowLabel}
                   </td>
                   {matrix[rIdx].map((cell, cIdx) => (

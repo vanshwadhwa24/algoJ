@@ -19,7 +19,7 @@ export const HashTableVisualizer: React.FC<HashTableVisualizerProps> = ({
       <div className="text-xs font-black text-gray-500 uppercase tracking-wider mb-1 flex items-center justify-between">
         <span>Strategy: {collisionStrategy === 'chaining' ? 'Separate Chaining' : 'Linear Probing (Open Addressing)'}</span>
         {activeHash !== null && activeHash !== undefined && (
-          <span className="bg-[#FAF6EC] border border-[#1A1A1A] px-2 py-0.5 rounded-full text-[#1A1A1A]">
+          <span className="bg-[#F7EFE1] border border-[#2B2620] px-2 py-0.5 rounded-full text-[#2B2620]">
             Current Hash: {activeHash}
           </span>
         )}
@@ -28,21 +28,21 @@ export const HashTableVisualizer: React.FC<HashTableVisualizerProps> = ({
       <div className="space-y-2">
         {safeBuckets.map((bucket) => {
           const isTargetBucket = bucket.index === activeHash;
-          let bucketBg = 'bg-[#FAF6EC]';
-          if (bucket.state === 'found') bucketBg = 'bg-[#8FD6B0]';
-          else if (bucket.state === 'collision') bucketBg = 'bg-[#F5A868]';
-          else if (bucket.state === 'active') bucketBg = 'bg-[#F5D876]';
+          let bucketBg = 'bg-[#F7EFE1]';
+          if (bucket.state === 'found') bucketBg = 'bg-[#9CCBA2]';
+          else if (bucket.state === 'collision') bucketBg = 'bg-[#D97B54]';
+          else if (bucket.state === 'active') bucketBg = 'bg-[#DFA43C]';
 
           return (
             <div
               key={bucket.index}
-              className={`flex items-center gap-3 p-2 rounded-2xl border-[2px] border-[#1A1A1A] ${
-                isTargetBucket ? 'bg-amber-50 shadow-[3px_3px_0px_#1A1A1A]' : 'bg-white'
+              className={`flex items-center gap-3 p-2 rounded-2xl border border-[#E8DCC4] ${
+                isTargetBucket ? 'bg-amber-50 shadow-[0_4px_12px_rgba(43,38,32,0.18)]' : 'bg-white'
               }`}
             >
               {/* Bucket Index badge */}
               <div
-                className={`w-12 h-10 rounded-xl border-[2px] border-[#1A1A1A] ${bucketBg} flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-[1px_1px_0px_#1A1A1A]`}
+                className={`w-12 h-10 rounded-xl border border-[#E8DCC4] ${bucketBg} flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-[0_2px_6px_rgba(43,38,32,0.18)]`}
               >
                 [{bucket.index}]
               </div>
@@ -58,10 +58,10 @@ export const HashTableVisualizer: React.FC<HashTableVisualizerProps> = ({
                       <React.Fragment key={eIdx}>
                         {eIdx > 0 && <ArrowRight className="w-3.5 h-3.5 text-gray-400 shrink-0" />}
                         <div
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-[1.5px] border-[#1A1A1A] text-xs font-bold font-mono shadow-[1px_1px_0px_#1A1A1A] ${
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border-[1.5px] border-[#2B2620] text-xs font-bold font-mono shadow-[0_2px_6px_rgba(43,38,32,0.18)] ${
                             isTombstone
                               ? 'bg-red-100 text-red-600 line-through border-red-500'
-                              : 'bg-white text-[#1A1A1A]'
+                              : 'bg-white text-[#2B2620]'
                           }`}
                         >
                           {isTombstone ? (

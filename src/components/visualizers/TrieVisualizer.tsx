@@ -30,14 +30,14 @@ export const TrieVisualizer: React.FC<TrieVisualizerProps> = ({
       <div key={node.id} className="flex flex-col items-center">
         {/* Node Circle */}
         <div
-          className={`flex items-center justify-center border-[2.5px] border-[#1A1A1A] rounded-full shadow-[2px_2px_0px_#1A1A1A] select-none transition-all ${
+          className={`flex items-center justify-center border border-[#E8DCC4] rounded-full shadow-[0_3px_10px_rgba(43,38,32,0.16)] select-none transition-all ${
             isRoot
-              ? 'w-12 h-12 bg-[#FAF6EC] font-black text-xs'
+              ? 'w-12 h-12 bg-[#F7EFE1] font-black text-xs'
               : node.highlight === 'found'
-              ? 'w-11 h-11 bg-[#8FD6B0] text-[#1A1A1A] font-black text-sm'
+              ? 'w-11 h-11 bg-[#9CCBA2] text-[#2B2620] font-black text-sm'
               : node.highlight === 'active'
-              ? 'w-11 h-11 bg-[#F5D876] text-[#1A1A1A] font-black text-sm'
-              : 'w-11 h-11 bg-white text-[#1A1A1A] font-black text-sm'
+              ? 'w-11 h-11 bg-[#DFA43C] text-[#2B2620] font-black text-sm'
+              : 'w-11 h-11 bg-white text-[#2B2620] font-black text-sm'
           }`}
         >
           {isRoot ? 'ROOT' : node.char.toUpperCase()}
@@ -45,14 +45,14 @@ export const TrieVisualizer: React.FC<TrieVisualizerProps> = ({
 
         {/* End of Word Terminal Indicator */}
         {node.isEndOfWord && (
-          <span className="bg-[#1A1A1A] text-white text-[9px] font-black px-1.5 py-0.5 rounded-full mt-1 border border-[#1A1A1A]">
+          <span className="bg-[#2B2620] text-white text-[9px] font-black px-1.5 py-0.5 rounded-full mt-1 border border-[#2B2620]">
             WORD
           </span>
         )}
 
         {/* Children Row */}
         {childrenKeys.length > 0 && (
-          <div className="flex items-start gap-4 sm:gap-6 mt-4 pt-3 border-t-[2px] border-dashed border-[#1A1A1A]">
+          <div className="flex items-start gap-4 sm:gap-6 mt-4 pt-3 border-t-[2px] border-dashed border-[#2B2620]">
             {childrenKeys.map((ch) => renderTrieNode(node.children[ch], path + ch))}
           </div>
         )}
@@ -63,12 +63,12 @@ export const TrieVisualizer: React.FC<TrieVisualizerProps> = ({
   return (
     <div className="flex flex-col items-center w-full p-4 space-y-4">
       {/* Current Stored Words List */}
-      <div className="flex flex-wrap items-center gap-2 bg-[#FAF6EC] border-[2px] border-[#1A1A1A] p-2.5 rounded-2xl text-xs font-bold shadow-[2px_2px_0px_#1A1A1A]">
+      <div className="flex flex-wrap items-center gap-2 bg-[#F7EFE1] border border-[#E8DCC4] p-2.5 rounded-2xl text-xs font-bold shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
         <span className="text-gray-500">Stored Words:</span>
         {wordsList.map((w) => (
           <span
             key={w}
-            className="bg-white border border-[#1A1A1A] px-2.5 py-1 rounded-full font-mono text-[#1A1A1A]"
+            className="bg-white border border-[#2B2620] px-2.5 py-1 rounded-full font-mono text-[#2B2620]"
           >
             "{w}"
           </span>
@@ -77,12 +77,12 @@ export const TrieVisualizer: React.FC<TrieVisualizerProps> = ({
 
       {/* Autocomplete / Search Output */}
       {searchResults.length > 0 && (
-        <div className="flex flex-wrap items-center gap-2 bg-[#8FD6B0] border-[2px] border-[#1A1A1A] p-2.5 rounded-2xl text-xs font-black shadow-[2px_2px_0px_#1A1A1A]">
+        <div className="flex flex-wrap items-center gap-2 bg-[#9CCBA2] border border-[#E8DCC4] p-2.5 rounded-2xl text-xs font-black shadow-[0_3px_10px_rgba(43,38,32,0.16)]">
           <span>Completions Found:</span>
           {searchResults.map((w) => (
             <span
               key={w}
-              className="bg-[#1A1A1A] text-white px-2 py-0.5 rounded-full font-mono"
+              className="bg-[#2B2620] text-white px-2 py-0.5 rounded-full font-mono"
             >
               {w}
             </span>
