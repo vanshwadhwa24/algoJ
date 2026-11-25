@@ -43,3 +43,7 @@
 .slider .thumb { -fx-background-color: #2B2620; }
 .code-panel { -fx-background-color: #2B2620; -fx-background-radius: 24; -fx-padding: 16; }
 .footer { -fx-background-color: white; -fx-border-color: #2B2620 transparent transparent transparent; -fx-border-width: 2 0 0 0; -fx-padding: 28 40 28 40; }
+.op-gold { -fx-background-color: #DFA43C; }
+.op-sage { -fx-background-color: #9CCBA2; }
+.op-terra { -fx-background-color: #D97B54; }
+.op-teal { -fx-background-color: #8FB5AD; }

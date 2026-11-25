@@ -41,7 +41,7 @@ public final class ArrayRenderers {
             double startX = (w - gap * n) / 2 + (gap - bw) / 2, base = h - 40;
             for (int i = 0; i < n; i++) {
                 int v = bars.get(i)[0];
-                double bh = Math.max(28, Math.round((v - min) / (double) (max - min) * 160 + 28));
+                double bh = Math.max(28, Math.round((v - min) / (double) (max - min) * (h - 130) + 28));
                 Color fill = Draw.CREAM; String badge = null; String st = states.get(i);
                 if (found != null && i == found || "found".equals(st)) { fill = Draw.SAGE; badge = "FOUND"; }
                 else if (pivot != null && i == pivot || "pivot".equals(st)) { fill = Draw.TEAL; badge = "PIVOT"; }
