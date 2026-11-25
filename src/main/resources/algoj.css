@@ -1,0 +1,45 @@
+.root { -fx-font-family: "Poppins"; -fx-font-size: 13px; -fx-text-fill: #2B2620; -fx-background-color: #F7EFE1; }
+.mono { -fx-font-family: "JetBrains Mono"; }
+.scroll-pane { -fx-background-color: transparent; -fx-background: #F7EFE1; }
+.scroll-pane > .viewport { -fx-background-color: #F7EFE1; }
+.scroll-bar:vertical, .scroll-bar:horizontal { -fx-background-color: #F7EFE1; }
+.scroll-bar .thumb { -fx-background-color: #2B2620; -fx-background-radius: 4; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button { -fx-padding: 0; }
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow { -fx-padding: 0; -fx-shape: " "; }
+
+.card { -fx-background-color: white; -fx-background-radius: 24; -fx-border-color: #E8DCC4; -fx-border-radius: 24; -fx-padding: 16;
+  -fx-effect: dropshadow(gaussian, rgba(43,38,32,0.22), 20, 0, 0, 8); }
+.card-lg { -fx-background-radius: 28; -fx-border-radius: 28; -fx-padding: 24; -fx-effect: dropshadow(gaussian, rgba(43,38,32,0.25), 28, 0, 0, 12); }
+.cream { -fx-background-color: #F7EFE1; -fx-background-radius: 16; -fx-border-color: #E8DCC4; -fx-border-radius: 16; }
+
+.navbar { -fx-background-color: white; -fx-background-radius: 28; -fx-padding: 8 16 8 16;
+  -fx-effect: dropshadow(gaussian, rgba(43,38,32,0.16), 10, 0, 0, 3); }
+.tab { -fx-background-color: transparent; -fx-text-fill: #5C5348; -fx-font-weight: 600; -fx-background-radius: 20; -fx-padding: 8 16 8 16; -fx-cursor: hand; }
+.tab:hover { -fx-background-color: #F7EFE1; }
+.tab-active { -fx-background-color: #C25A35; -fx-text-fill: white; }
+.tab-active:hover { -fx-background-color: #C25A35; }
+.points-pill { -fx-background-color: #33706A; -fx-background-radius: 20; -fx-text-fill: white; -fx-font-weight: 700; -fx-padding: 6 14 6 14; }
+
+.pill-btn { -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #2B2620; -fx-text-fill: #2B2620; -fx-font-weight: 700; -fx-padding: 6 16 6 16; -fx-cursor: hand; }
+.pill-btn:hover { -fx-translate-y: -1; }
+.op-btn { -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #2B2620; -fx-text-fill: #2B2620; -fx-font-weight: 700; -fx-font-size: 12px; -fx-padding: 4 10 4 10; -fx-cursor: hand; }
+.op-btn:hover { -fx-opacity: 0.85; }
+.dark-btn { -fx-background-color: #2B2620; -fx-text-fill: white; -fx-background-radius: 22; -fx-font-weight: 700; -fx-padding: 10 22 10 22; -fx-cursor: hand; }
+.light-btn { -fx-background-color: #F7EFE1; -fx-text-fill: #2B2620; -fx-background-radius: 22; -fx-border-color: #2B2620; -fx-border-radius: 22; -fx-font-weight: 700; -fx-padding: 10 22 10 22; -fx-cursor: hand; }
+.chip { -fx-background-color: white; -fx-background-radius: 16; -fx-border-color: #2B2620; -fx-border-radius: 16; -fx-font-weight: 700; -fx-font-size: 12px; -fx-padding: 4 12 4 12; -fx-cursor: hand; }
+.chip-active { -fx-background-color: #2B2620; -fx-text-fill: white; }
+.chip-gold { -fx-background-color: #DFA43C; }
+.text-input { -fx-background-color: #F7EFE1; -fx-background-radius: 12; -fx-border-color: #E8DCC4; -fx-border-radius: 12; -fx-font-family: "JetBrains Mono"; -fx-font-weight: 700; -fx-font-size: 12px; -fx-padding: 5 10 5 10; }
+.combo-box { -fx-background-color: #F7EFE1; -fx-background-radius: 16; -fx-border-color: #E8DCC4; -fx-border-radius: 16; -fx-font-weight: 800; -fx-font-size: 16px; -fx-padding: 2 8 2 8;
+  -fx-effect: dropshadow(gaussian, rgba(43,38,32,0.16), 10, 0, 0, 3); }
+.combo-box-popup .list-view { -fx-background-color: white; -fx-border-color: #E8DCC4; }
+.combo-box-popup .list-cell { -fx-font-weight: 600; -fx-padding: 6 12 6 12; }
+.combo-box-popup .list-cell:filled:selected, .combo-box-popup .list-cell:filled:hover { -fx-background-color: #F7EFE1; -fx-text-fill: #2B2620; }
+.badge { -fx-background-radius: 12; -fx-font-weight: 800; -fx-font-size: 11px; -fx-padding: 2 10 2 10; -fx-border-radius: 12; -fx-border-color: #2B2620; }
+.tag { -fx-background-color: #F7EFE1; -fx-background-radius: 6; -fx-font-size: 10px; -fx-font-weight: 600; -fx-text-fill: #5C5348; -fx-padding: 2 6 2 6; }
+.heading { -fx-font-weight: 800; }
+.muted { -fx-text-fill: #6B6257; }
+.slider .track { -fx-background-color: #E8DCC4; -fx-background-radius: 4; }
+.slider .thumb { -fx-background-color: #2B2620; }
+.code-panel { -fx-background-color: #2B2620; -fx-background-radius: 24; -fx-padding: 16; }
+.footer { -fx-background-color: white; -fx-border-color: #2B2620 transparent transparent transparent; -fx-border-width: 2 0 0 0; -fx-padding: 28 40 28 40; }
