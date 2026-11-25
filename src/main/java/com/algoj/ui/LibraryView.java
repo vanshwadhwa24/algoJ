@@ -73,7 +73,7 @@ public class LibraryView extends VBox {
             a.tags().stream().limit(3).forEach(t -> tags.getChildren().add(label(t, "tag")));
             VBox card = card(badges, label(a.name(), "heading"), desc, tags,
                     row(8, label("⏱ " + a.complexity().timeAverage(), "mono"), grow(), button("Visualize  →", "pill-btn", () -> open.accept(a))));
-            card.setPrefWidth(330);
+            card.prefWidthProperty().bind(grid.widthProperty().subtract(32).divide(3).subtract(1));
             grid.getChildren().add(card);
         }
     }

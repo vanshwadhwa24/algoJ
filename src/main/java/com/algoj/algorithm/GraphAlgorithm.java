@@ -52,6 +52,30 @@ public abstract class GraphAlgorithm extends BaseAlgorithm {
         return g;
     }
 
+    /** The standard sample plus a separate G-H component, for showing components and spanning forests. */
+    public static GraphData disconnectedGraph() {
+        GraphData g = sampleGraph();
+        g.getVertices().add(new GraphVertex("G", "G", 680, 90));
+        g.getVertices().add(new GraphVertex("H", "H", 680, 210));
+        g.getEdges().add(new GraphEdge("e10", "G", "H", 7, false));
+        return g;
+    }
+
+    /** A directed graph with one negative edge (and no negative cycle). */
+    public static GraphData negativeWeightsGraph() {
+        GraphData g = new GraphData();
+        g.setDirected(true);
+        g.setWeighted(true);
+        g.setStartVertexId("S");
+        g.setVertices(new ArrayList<>(List.of(
+                new GraphVertex("S", "S", 120, 150), new GraphVertex("A", "A", 280, 80), new GraphVertex("B", "B", 280, 220),
+                new GraphVertex("C", "C", 460, 80), new GraphVertex("D", "D", 460, 220))));
+        g.setEdges(new ArrayList<>(List.of(
+                new GraphEdge("e1", "S", "A", 4, true), new GraphEdge("e2", "S", "B", 5, true), new GraphEdge("e3", "A", "C", -2, true),
+                new GraphEdge("e4", "B", "C", 3, true), new GraphEdge("e5", "C", "D", 2, true), new GraphEdge("e6", "B", "D", 6, true))));
+        return g;
+    }
+
     protected static Map<String, List<GraphEdge>> getAdjacencyList(GraphData graph) {
         Map<String, List<GraphEdge>> adj = new HashMap<>();
         for (GraphVertex v : graph.getVertices()) {

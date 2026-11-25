@@ -244,8 +244,16 @@ public class VisualizerView extends VBox {
                     saveLoad(() -> inputText, s -> { String[] p = s.split(" \\| "); if (p.length == 2) { a.setText(p[0]); b.setText(p[1]); go.run(); } });
                 }
                 default -> {
-                    inputs.getChildren().add(label("Sample graph  ·  start at the first vertex", "muted"));
-                    input = () -> AlgorithmInput.empty();
+                    com.algoj.model.GraphModel.GraphData[] graph = {com.algoj.algorithm.GraphAlgorithm.sampleGraph()};
+                    input = () -> new AlgorithmInput(null, null, null, null, null, null, null, graph[0]);
+                    String[] names = {"Standard Graph", "Disconnected Graph", "Negative Weights Graph"};
+                    java.util.function.Supplier<com.algoj.model.GraphModel.GraphData>[] makers = new java.util.function.Supplier[]{
+                            com.algoj.algorithm.GraphAlgorithm::sampleGraph, com.algoj.algorithm.GraphAlgorithm::disconnectedGraph,
+                            com.algoj.algorithm.GraphAlgorithm::negativeWeightsGraph};
+                    for (int i = 0; i < names.length; i++) {
+                        var maker = makers[i];
+                        inputs.getChildren().add(button(names[i], "light-btn", () -> { graph[0] = maker.get(); inputText = maker.get().getVertices().size() + " vertices"; run(); }));
+                    }
                 }
             }
         }
@@ -403,7 +411,9 @@ public class VisualizerView extends VBox {
             l.setMaxWidth(Double.MAX_VALUE);
             codeLines.getChildren().add(l);
         }
-        VBox code = new VBox(10, label("PSEUDOCODE", "badge"), codeLines);
+        Label codeTitle = label("PSEUDOCODE", "muted");
+        codeTitle.setStyle("-fx-text-fill:#E8DCC4;-fx-font-weight:700;");
+        VBox code = new VBox(10, codeTitle, codeLines);
         code.getStyleClass().add("code-panel");
         AlgorithmInfo.Complexity c = info.complexity();
         VBox cx = card(label("Complexity", "heading"),
