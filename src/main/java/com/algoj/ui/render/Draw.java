@@ -66,7 +66,7 @@ public final class Draw {
     public static Color stateColor(String state, Color fallback) {
         if (state == null) return fallback;
         return switch (state) {
-            case "active", "inserted", "found", "new", "top", "sorted", "visited", "mst" -> SAGE;
+            case "active", "inserted", "found", "new", "top", "sorted", "visited", "mst", "traversed" -> SAGE;
             case "comparing", "current", "compare", "queued", "probed", "enqueueing", "pushing", "relaxed" -> MUSTARD;
             case "deleted", "swapping", "mid", "dequeueing", "popping", "collision", "rejected", "imbalanced", "violation" -> TERRA;
             case "pivot", "rotating", "front", "rear", "occupied", "shifted", "placed" -> TEAL;

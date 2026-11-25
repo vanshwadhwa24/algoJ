@@ -300,7 +300,7 @@ public class VisualizerView extends VBox {
             case "stacks" -> List.of(op("push", "op-sage"), op("pop", "op-terra"), op("peek", "op-gold"), op("isEmpty", "op-teal"));
             case "queues" -> List.of(op("enqueue", "op-sage"), op("dequeue", "op-terra"), op("peekFront", "op-gold"), op("isEmpty", "op-teal"));
             case "hash-tables" -> List.of(op("insert", "op-sage"), op("delete", "op-terra"), op("search", "op-gold"));
-            case "binary-search-tree" -> List.of(op("insert", "op-sage"), op("delete", "op-terra"), op("search", "op-gold"), op("inorder", "op-teal"), op("preorder", "op-teal"), op("postorder", "op-teal"));
+            case "binary-search-tree" -> List.of(op("insert", "op-sage"), op("delete", "op-terra"), op("search", "op-gold"), op("findMin", "op-gold"), op("findMax", "op-gold"), op("inorder", "op-teal"), op("preorder", "op-teal"), op("postorder", "op-teal"), op("levelorder", "op-teal"));
             case "avl-trees" -> List.of(op("insert", "op-sage"), op("search", "op-gold"));
             case "binary-heaps" -> List.of(op("insert", "op-sage"), op("extract", "op-terra"), op("peek", "op-gold"));
             default -> List.of(op("insert", "op-sage"), op("delete", "op-terra"), op("search", "op-gold"));

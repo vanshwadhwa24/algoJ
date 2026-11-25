@@ -192,10 +192,57 @@ public class BSTStructureEngine implements StructureEngine<BSTDSState> {
             state.setActiveNodeId(null);
             state.setMessage(String.format("%s traversal complete: %s.", type.toUpperCase(), result));
             steps.add(new ExecutionStep(steps.size(), "traverse-complete", state.getMessage(), 5, state.copy()));
+        } else if ("levelorder".equalsIgnoreCase(type)) {
+            levelOrder(state, steps);
+        } else if ("findMin".equalsIgnoreCase(type) || "findMax".equalsIgnoreCase(type)) {
+            extreme(state, steps, "findMin".equalsIgnoreCase(type));
         }
 
         clearHighlights(state.getRoot());
         return steps;
+    }
+
+    /** Breadth-first visit: one step per node, level by level. */
+    private void levelOrder(BSTDSState state, List<ExecutionStep> steps) {
+        List<Integer> result = new ArrayList<>();
+        java.util.ArrayDeque<BSTNode> queue = new java.util.ArrayDeque<>();
+        if (state.getRoot() != null) queue.add(state.getRoot());
+        while (!queue.isEmpty()) {
+            BSTNode node = queue.poll();
+            node.setHighlight("traversed");
+            state.setActiveNodeId(node.getId());
+            result.add(node.getValue());
+            state.setTraversalOutput(new ArrayList<>(result));
+            steps.add(new ExecutionStep(steps.size(), "visit",
+                    String.format("Level-order visit: node %d (queue holds %d waiting nodes).", node.getValue(), queue.size()), 3, state.copy()));
+            if (node.getLeft() != null) queue.add(node.getLeft());
+            if (node.getRight() != null) queue.add(node.getRight());
+        }
+        state.setActiveNodeId(null);
+        state.setMessage(String.format("LEVELORDER traversal complete: %s.", result));
+        steps.add(new ExecutionStep(steps.size(), "traverse-complete", state.getMessage(), 5, state.copy()));
+    }
+
+    /** Walks left (minimum) or right (maximum) until the pointer is null. */
+    private void extreme(BSTDSState state, List<ExecutionStep> steps, boolean min) {
+        BSTNode curr = state.getRoot(), last = null;
+        String name = min ? "minimum" : "maximum";
+        while (curr != null) {
+            last = curr;
+            curr.setHighlight("active");
+            state.setActiveNodeId(curr.getId());
+            steps.add(new ExecutionStep(steps.size(), "compare",
+                    String.format("At node %d: go %s to find the %s.", curr.getValue(), min ? "left" : "right", name), 2, state.copy()));
+            curr.setHighlight("default");
+            curr = min ? curr.getLeft() : curr.getRight();
+        }
+        if (last == null) {
+            state.setMessage("Tree is empty: no " + name + ".");
+        } else {
+            last.setHighlight("found");
+            state.setMessage(String.format("The %s is %d.", name, last.getValue()));
+        }
+        steps.add(new ExecutionStep(steps.size(), "found", state.getMessage(), 3, state.copy()));
     }
 
     private BSTNode deleteRecursive(BSTNode root, int val, List<ExecutionStep> steps, BSTDSState state) {
