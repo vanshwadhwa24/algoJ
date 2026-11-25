@@ -42,7 +42,7 @@ public final class RecursionRenderers {
             if (s.getDpArray() != null && !s.getDpArray().isEmpty()) cells(g, w, h - 70, "dp[]", s.getDpArray(), s.getCurrentIndex());
             if (s.getMemoTable() != null && !s.getMemoTable().isEmpty()) {
                 List<Integer> v = new ArrayList<>(s.getMemoTable().values());
-                cells(g, w, h - 20, "memo", v, null);
+                cells(g, w, h - 60, "memo", v, null);
             }
             if (s.getResult() != null) Draw.text(g, "fib(" + s.getN() + ") = " + s.getResult(), w / 2, h - 110, Draw.mono(15), Draw.INK);
         }

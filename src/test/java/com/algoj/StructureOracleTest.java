@@ -222,6 +222,35 @@ class StructureOracleTest {
     }
 
     @Test
+    void bstLevelOrderAndExtremesMatchReference() {
+        BSTStructureEngine engine = new BSTStructureEngine();
+        for (int it = 0; it < 100; it++) {
+            BSTDSState s = engine.createInitial(List.of(50));
+            TreeSet<Integer> ref = new TreeSet<>(List.of(50));
+            for (int i = 0; i < 10; i++) {
+                int v = random.nextInt(40) * 3;
+                s = next(engine, s, Operation.withValue("insert", v));
+                ref.add(v);
+            }
+            // reference breadth-first walk over the model's own links
+            List<Integer> bfs = new ArrayList<>();
+            ArrayDeque<BSTNode> q = new ArrayDeque<>(List.of(s.getRoot()));
+            while (!q.isEmpty()) {
+                BSTNode n = q.poll();
+                bfs.add(n.getValue());
+                if (n.getLeft() != null) q.add(n.getLeft());
+                if (n.getRight() != null) q.add(n.getRight());
+            }
+            assertEquals(bfs, next(engine, s, Operation.of("levelorder")).getTraversalOutput());
+            assertEquals("The minimum is " + ref.first() + ".", next(engine, s, Operation.of("findMin")).getMessage());
+            assertEquals("The maximum is " + ref.last() + ".", next(engine, s, Operation.of("findMax")).getMessage());
+        }
+        BSTDSState fixed = engine.createInitial(List.of(50, 30, 70, 20, 40, 60, 80));
+        assertEquals(List.of(50, 30, 70, 20, 40, 60, 80), next(engine, fixed, Operation.of("levelorder")).getTraversalOutput());
+        assertEquals("Tree is empty: no minimum.", next(engine, engine.createInitial(List.of()), Operation.of("findMin")).getMessage());
+    }
+
+    @Test
     void binarySearchTreeMatchesReferenceAndTraversals() {
         Failures f = new Failures();
         BSTStructureEngine engine = new BSTStructureEngine();

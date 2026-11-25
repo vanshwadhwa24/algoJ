@@ -11,11 +11,13 @@ import java.util.Map;
 public class GraphRenderer implements StateRenderer {
     @Override
     public void draw(GraphicsContext g, double w, double h, Object state) {
-        GraphData graph; Map<String, Object> dist = null; String info = null; java.util.List<String> order = null;
+        GraphData graph; Map<String, Object> dist = null; String info = null; java.util.List<String> order = null; Map<String, Object> matrix = null;
         if (state instanceof GraphTraversalState s) { graph = s.getGraph(); order = s.getTraversalOrder(); info = "Queue/Stack: " + s.getQueueOrStack(); }
-        else if (state instanceof ShortestPathState s) { graph = s.getGraph(); dist = s.getDistances(); }
+        else if (state instanceof ShortestPathState s) { graph = s.getGraph(); dist = s.getDistances(); matrix = s.getMatrix(); }
         else if (state instanceof MSTState s) { graph = s.getGraph(); info = "MST weight: " + s.getTotalWeight(); }
         else return;
+        double fullW = w;
+        if (matrix != null) w = fullW * 0.55;
         double scale = Math.min((w - 80) / 560.0, (h - 120) / 220.0), ox = (w - 560 * scale) / 2 - 60 * scale, oy = 40;
         for (GraphEdge e : graph.getEdges()) {
             GraphVertex a = vertex(graph, e.getSource()), b = vertex(graph, e.getTarget());
@@ -53,11 +55,31 @@ public class GraphRenderer implements StateRenderer {
                 Draw.text(g, "d=" + t, x, y + 34, Draw.mono(10), Draw.MUTED);
             }
         }
+        if (matrix != null) drawMatrix(g, fullW, h, matrix);
         if (order != null) Draw.textLeft(g, "Order: " + order, 12, h - 28, Draw.mono(12), Draw.INK);
         if (info != null) Draw.textLeft(g, info, 12, h - 10, Draw.mono(12), Draw.MUTED);
     }
 
     private static GraphVertex vertex(GraphData g, String id) {
         return g.getVertices().stream().filter(v -> v.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    /** Floyd-Warshall's all-pairs distance matrix, redrawn on every step. */
+    private static void drawMatrix(GraphicsContext g, double w, double h, Map<String, Object> matrix) {
+        java.util.List<?> labels = (java.util.List<?>) matrix.get("labels");
+        java.util.List<?> rows = (java.util.List<?>) matrix.get("dist");
+        if (labels == null || rows == null) return;
+        int n = labels.size();
+        double cell = Math.min(40, (h - 90) / (n + 1)), x0 = w * 0.58, y0 = 36;
+        Draw.textLeft(g, "ALL-PAIRS DISTANCE MATRIX", x0, 16, Draw.sans(10, FontWeight.BOLD), Draw.MUTED);
+        for (int i = 0; i < n; i++) {
+            Draw.text(g, String.valueOf(labels.get(i)), x0 + (i + 1.5) * cell, y0 + cell / 2, Draw.mono(11), Draw.MUTED);
+            Draw.text(g, String.valueOf(labels.get(i)), x0 + cell / 2, y0 + (i + 1.5) * cell, Draw.mono(11), Draw.MUTED);
+            java.util.List<?> row = (java.util.List<?>) rows.get(i);
+            for (int j = 0; j < n; j++) {
+                Draw.box(g, x0 + (j + 1) * cell + 1, y0 + (i + 1) * cell + 1, cell - 2, cell - 2, 6, i == j ? Draw.CREAM : Draw.WHITE, Draw.CREAM_BORDER);
+                Draw.text(g, String.valueOf(row.get(j)), x0 + (j + 1.5) * cell, y0 + (i + 1.5) * cell, Draw.mono(11), Draw.INK);
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ public class PracticeView extends HBox {
         VBox panel = new VBox(14, row(8, title, grow(), score), line);
         panel.setMaxWidth(830);
         panel.setPrefWidth(830);
-        panel.setStyle("-fx-background-color:#F7EFE1;-fx-background-radius:28;-fx-border-color:#E8DCC4;-fx-border-width:2;-fx-border-radius:28;-fx-padding:20;");
+        panel.setStyle("-fx-background-color:white;-fx-background-radius:28;-fx-border-color:#E8DCC4;-fx-border-width:2;-fx-border-radius:28;-fx-padding:20;");
         int n = 1;
         for (var q : svc.catalog().questions())
             panel.getChildren().add(new QuestionCard(n++, q, svc.quizzes(), () -> { update.run(); onScoreChange.run(); }));

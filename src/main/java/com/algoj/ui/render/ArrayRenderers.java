@@ -41,7 +41,7 @@ public final class ArrayRenderers {
             double startX = (w - gap * n) / 2 + (gap - bw) / 2, base = h - 40;
             for (int i = 0; i < n; i++) {
                 int v = bars.get(i)[0];
-                double bh = Math.max(28, Math.round((v - min) / (double) (max - min) * (h - 130) + 28));
+                double bh = Math.max(54, Math.round((v - min) / (double) (max - min) * (h - 150) + 54));
                 Color fill = Draw.CREAM; String badge = null; String st = states.get(i);
                 if (found != null && i == found || "found".equals(st)) { fill = Draw.SAGE; badge = "FOUND"; }
                 else if (pivot != null && i == pivot || "pivot".equals(st)) { fill = Draw.TEAL; badge = "PIVOT"; }
@@ -53,7 +53,7 @@ public final class ArrayRenderers {
                 double x = startX + i * gap;
                 Draw.box(g, x, base - bh, bw, bh, 16, fill, Draw.CREAM_BORDER);
                 Draw.text(g, String.valueOf(v), x + bw / 2, base - bh + 14, Draw.mono(13), Draw.INK);
-                Draw.text(g, "#" + i, x + bw / 2, base - 12, Draw.sans(10, FontWeight.BOLD), Color.rgb(43, 38, 32, 0.6));
+                Draw.text(g, "#" + i, x + bw / 2, base - 10, Draw.sans(10, FontWeight.BOLD), Color.rgb(43, 38, 32, 0.6));
                 if (badge != null) Draw.badge(g, badge, x + bw / 2, base - bh - (i % 2 == 1 ? 30 : 14));
                 StringBuilder ptr = new StringBuilder();
                 if (low != null && i == low) ptr.append("LOW ");

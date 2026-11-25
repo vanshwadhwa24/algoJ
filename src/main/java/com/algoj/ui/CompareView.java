@@ -21,6 +21,7 @@ public class CompareView extends VBox {
     private final Playback playback = new Playback();
     private final Services svc;
     private final TextField input = new TextField("45, 12, 85, 32, 89, 39, 69, 44, 42, 1, 10");
+    { input.setPromptText("shared array"); }
     private final ComboBox<AlgorithmInfo> pickA = new ComboBox<>(), pickB = new ComboBox<>();
     private final Canvas canvasA = new Canvas(560, 290), canvasB = new Canvas(560, 290);
     private final Label[] cmpA = stat(), cmpB = stat();
