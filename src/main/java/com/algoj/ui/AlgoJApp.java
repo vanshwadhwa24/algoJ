@@ -51,25 +51,29 @@ public class AlgoJApp extends Application {
         visualizer = new VisualizerView(services);
         visualizer.open(services.catalog().find("bubble-sort").orElseThrow());
 
-        Label logo = label("α", "badge");
-        logo.setStyle("-fx-background-color:#2B2620;-fx-text-fill:white;-fx-background-radius:20;-fx-padding:6 12 6 12;-fx-font-size:16px;");
-        Label brand = label("AlgoJ", "heading");
-        brand.setStyle("-fx-font-size:20px;");
-        for (String name : new String[]{"Dashboard", "Algorithms", "Visualizer", "Compare", "Practice"}) {
-            Button b = button(name, "tab", () -> show(name));
-            tabButtons.put(name, b);
+        Label logo = label("α", "heading");
+        logo.setStyle("-fx-background-color:#DFA43C;-fx-background-radius:20;-fx-min-width:32;-fx-min-height:32;-fx-alignment:center;-fx-font-size:15px;-fx-border-color:#2B2620;-fx-border-width:2;-fx-border-radius:20;");
+        javafx.scene.text.Text algo = new javafx.scene.text.Text("Algo"), j = new javafx.scene.text.Text("J");
+        for (var tx : new javafx.scene.text.Text[]{algo, j}) tx.setStyle("-fx-font-family:'Poppins';-fx-font-weight:900;-fx-font-size:18px;-fx-fill:" + (tx == j ? "#C25A35" : "#2B2620") + ";");
+        javafx.scene.text.TextFlow brand = new javafx.scene.text.TextFlow(algo, j);
+        String[][] items = {{"Dashboard", "◔"}, {"Algorithms", "▤"}, {"Visualizer", "◎"}, {"Compare", "⇄"}, {"Practice", "✓"}};
+        for (String[] it : items) {
+            Button b = button(it[1] + "  " + it[0], "tab", () -> show(it[0]));
+            tabButtons.put(it[0], b);
             tabs.getChildren().add(b);
         }
-        HBox nav = row(18, logo, brand, grow(), tabs, points);
+        HBox nav = row(10, logo, brand, grow(), tabs, grow(), points);
         nav.getStyleClass().add("navbar");
         nav.setAlignment(Pos.CENTER_LEFT);
-        BorderPane.setMargin(nav, new Insets(18, 40, 8, 40));
+        nav.setMaxWidth(1216);
+        VBox navHolder = new VBox(nav);
+        navHolder.setAlignment(Pos.TOP_CENTER);
+        navHolder.setPadding(new Insets(14, 15, 0, 0));
 
         scroll.setFitToWidth(true);
         scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        root.setTop(nav);
+        root.setTop(navHolder);
         root.setCenter(scroll);
-        root.setBottom(footer());
         show("Dashboard");
         Scene scene = new Scene(root, 1440, 900);
         scene.getStylesheets().add(getClass().getResource("/algoj.css").toExternalForm());
@@ -82,16 +86,23 @@ public class AlgoJApp extends Application {
     }
 
     public void show(String name) {
-        tabButtons.forEach((k, b) -> { b.getStyleClass().removeAll("tab", "tab-active"); b.getStyleClass().add(k.equals(name) ? "tab-active" : "tab"); });
+        tabButtons.forEach((k, b) -> { b.getStyleClass().remove("tab-active"); if (!b.getStyleClass().contains("tab")) b.getStyleClass().add("tab"); if (k.equals(name)) b.getStyleClass().add("tab-active"); });
         Node content = switch (name) {
-            case "Dashboard" -> new DashboardView(services, c -> { show("Algorithms"); library.setCategory(c); }, () -> show("Compare"), () -> show("Practice"));
+            case "Dashboard" -> new DashboardView(services, c -> { show("Algorithms"); library.setCategory(c); },
+                    () -> openAlgorithm("bubble-sort"), () -> show("Compare"), () -> show("Practice"));
             case "Algorithms" -> library;
             case "Visualizer" -> visualizer;
             case "Compare" -> new CompareView(services);
             default -> new PracticeView(services, this::updatePoints);
         };
-        VBox page = new VBox(content);
-        page.setPadding(new Insets(0, 40, 0, 40));
+        VBox column = new VBox(content);
+        column.setMaxWidth(1216);
+        column.setPrefWidth(1216);
+        VBox page = new VBox(column, footer());
+        page.setAlignment(Pos.TOP_CENTER);
+        page.setFillWidth(true);
+        VBox.setVgrow(column, Priority.ALWAYS);
+        column.setMaxWidth(1216);
         scroll.setContent(page);
         scroll.setVvalue(0);
         updatePoints();
@@ -102,8 +113,17 @@ public class AlgoJApp extends Application {
     }
 
     private Node footer() {
-        HBox f = row(20, label("AlgoJ Visualizer", "heading"), grow(), label("Java engine  ·  JavaFX  ·  SQLite via JDBC", "muted"));
+        Label mark = label("α", "heading");
+        mark.setStyle("-fx-background-color:#9CCBA2;-fx-background-radius:20;-fx-min-width:32;-fx-min-height:32;-fx-alignment:center;-fx-border-color:#2B2620;-fx-border-width:2;-fx-border-radius:20;");
+        Label sub = label("Interactive Warm Geometric Data Structures & Algorithms Suite", "muted");
+        sub.setStyle("-fx-font-size:11px;-fx-font-weight:700;");
+        Label links = label("Dashboard   •   Library   •   Visualizer   •   Comparison   •   Quiz Practice", "heading");
+        links.setStyle("-fx-font-size:11px;-fx-font-weight:700;");
+        Label mono = label("Java Engine • JavaFX • SQLite via JDBC", "mono");
+        mono.setStyle("-fx-font-size:11px;-fx-text-fill:#6B6257;");
+        HBox f = row(14, mark, new VBox(0, label("AlgoJ Visualizer", "heading"), sub), grow(), links, grow(), mono);
         f.getStyleClass().add("footer");
+        f.setPadding(new Insets(28, 112, 28, 112));
         f.setAlignment(Pos.CENTER_LEFT);
         return f;
     }

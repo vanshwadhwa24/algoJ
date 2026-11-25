@@ -55,12 +55,14 @@ public class VisualizerView extends VBox {
         });
         picker.setOnAction(e -> { if (picker.getValue() != null && picker.getValue() != info) open(picker.getValue()); });
 
-        Button canvasTab = button("Interactive Canvas", "tab-active", () -> {});
-        Button theoryTab = button("Theory & Notes", "tab", () -> {});
-        Button practiceTab = button("Practice", "tab", () -> {});
+        Button canvasTab = button("</>  Interactive Canvas", "tab", () -> {});
+        Button theoryTab = button("▤  Theory & Notes", "tab", () -> {});
+        Button practiceTab = button("?  Practice", "tab", () -> {});
         List<Button> tabs = List.of(canvasTab, theoryTab, practiceTab);
         Consumer<Integer> showTab = i -> {
-            for (int k = 0; k < tabs.size(); k++) { tabs.get(k).getStyleClass().removeAll("tab", "tab-active"); tabs.get(k).getStyleClass().add(k == i ? "tab-active" : "tab"); }
+            for (int k = 0; k < tabs.size(); k++)
+                tabs.get(k).setStyle("-fx-background-radius:16;-fx-padding:6 16 6 16;-fx-font-size:12px;-fx-font-weight:800;-fx-cursor:hand;"
+                        + (k == i ? "-fx-background-color:#2B2620;-fx-text-fill:white;" : "-fx-background-color:transparent;-fx-text-fill:#4a443b;"));
             body.setCenter(i == 0 ? canvasPane() : i == 1 ? theory() : practice());
         };
         canvasTab.setOnAction(e -> showTab.accept(0));
@@ -68,8 +70,14 @@ public class VisualizerView extends VBox {
         practiceTab.setOnAction(e -> showTab.accept(2));
         this.showCanvas = () -> showTab.accept(0);
 
-        HBox header = row(14, picker, badgeHolder, grow(), canvasTab, theoryTab, practiceTab);
-        header.setAlignment(Pos.CENTER_LEFT);
+        picker.setPrefWidth(620);
+        HBox tabRow = row(2, canvasTab, theoryTab, practiceTab);
+        tabRow.setMaxWidth(Region.USE_PREF_SIZE);
+        tabRow.setStyle("-fx-background-color:#F7EFE1;-fx-background-radius:18;-fx-padding:3;");
+        HBox pickRow = row(12, picker, badgeHolder);
+        pickRow.setAlignment(Pos.CENTER_LEFT);
+        VBox header = new VBox(12, pickRow, tabRow);
+        header.setStyle("-fx-background-color:white;-fx-background-radius:24;-fx-padding:14 16 14 16;-fx-effect:dropshadow(gaussian,rgba(43,38,32,0.16),16,0,0,6);");
         getChildren().addAll(header, body);
 
         scrub.valueProperty().addListener((o, a, b) -> { if (!updatingScrub) playback.goTo(b.intValue()); });
@@ -97,7 +105,7 @@ public class VisualizerView extends VBox {
 
     private Node canvasPane() {
         StackPane holder = new StackPane(canvas);
-        holder.setStyle("-fx-background-color:white;-fx-background-radius:20;-fx-border-color:#2B2620;-fx-border-width:2;-fx-border-radius:20;");
+        holder.setStyle("-fx-background-color:transparent;");
         holder.widthProperty().addListener((o, a, w) -> { canvas.setWidth(w.doubleValue() - 4); });
         canvas.setHeight(380);
 
@@ -109,9 +117,16 @@ public class VisualizerView extends VBox {
     }
 
     private VBox canvasCard(Node holder) {
-        HBox head = row(10, label("Execution Canvas", "heading"), grow(), counters);
+        Label cap = label("EXECUTION CANVAS", "heading");
+        cap.setStyle("-fx-font-size:11px;-fx-font-weight:900;-fx-text-fill:#4a443b;");
+        counters.setStyle("-fx-background-color:white;-fx-border-color:#E8DCC4;-fx-background-radius:12;-fx-border-radius:12;-fx-font-size:11px;-fx-font-weight:800;-fx-padding:3 12 3 12;");
+        HBox head = row(10, cap, grow(), counters);
         head.setAlignment(Pos.CENTER_LEFT);
-        return card(head, holder);
+        Region line = new Region();
+        line.setStyle("-fx-background-color:#F0E6D2;");
+        line.setMinHeight(1);
+        line.setMaxHeight(1);
+        return card(head, line, holder);
     }
 
     private HBox playbackControls() {
@@ -159,10 +174,10 @@ public class VisualizerView extends VBox {
     }
 
     private Node practice() {
-        List<com.algoj.catalog.PracticeQuestion> qs = svc.catalog().questionsFor(info.id());
+        List<com.algoj.catalog.PracticeQuestion> qs = svc.catalog().questionsFor(info.id()); int[] qn = {0};
         VBox v = new VBox(14);
         if (qs.isEmpty()) v.getChildren().add(card(wrap("No practice questions for this topic yet.")));
-        for (var q : qs) v.getChildren().add(new QuestionCard(q, svc.quizzes(), () -> {}));
+        for (var q : qs) v.getChildren().add(new QuestionCard(++qn[0], q, svc.quizzes(), () -> {}));
         return v;
     }
 
@@ -188,6 +203,9 @@ public class VisualizerView extends VBox {
 
     private void buildInputs() {
         inputs.getChildren().clear();
+        Label ic = label("≡  INPUT CONTROLS:", "heading");
+        ic.setStyle("-fx-font-size:10px;-fx-font-weight:900;-fx-text-fill:#4a443b;");
+        inputs.getChildren().add(ic);
         inputs.setAlignment(Pos.CENTER_LEFT);
         inputs.setSpacing(10);
         String id = info.id();
@@ -257,7 +275,7 @@ public class VisualizerView extends VBox {
                 }
             }
         }
-        if (inputs.getChildren().isEmpty()) inputs.getChildren().add(label("No input needed", "muted"));
+        
     }
 
     private void fibStyle(String active) {
